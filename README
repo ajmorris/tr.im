@@ -1,0 +1,16 @@
+tr.im URLs
+==========
+The tr.im URLs system is divided into three different Rails applications that run indepdently of each other:
+
+-- The tr.im website for URL creation, account management and statistics presentation
+-- The tr.im API
+-- The tr.im redirection system
+
+These are currently hosted in SVN while I get around to making the personal and painful adjustment to Git. I will eventually move the repositories to here so everyone can see new commits, but for now they are available in SVN:
+
+-- TBA
+-- TBA
+-- svn://raven.nambu.com/trim_redirects
+
+Anonymous users can read the repository but not yet make changes to it.
+
