@@ -1,16 +1,68 @@
 tr.im URLs
 ==========
-The tr.im URLs system is divided into three different Rails applications that run indepdently of each other:
+The tr.im URLs system is divided into three different Rails applications that run independently of each other:
 
 -- The tr.im website for URL creation, account management and statistics presentation
 -- The tr.im API
 -- The tr.im redirection system
 
-These are currently hosted in SVN while I get around to making the personal and painful adjustment to Git. I will eventually move the repositories to here so everyone can see new commits, but for now they are available in SVN:
+These applications are currently hosted in SVN on Nambu's network while I get around to making the personal and (very) painful adjustment to Git. I will eventually move the repositories to here so everyone can see new commits, but for now they are available in SVN for your viewing and forking pleasure.
 
 -- TBA
 -- TBA
 -- svn://raven.nambu.com/trim_redirects
 
-Anonymous users can read the repository but not yet make changes to it.
+Anonymous users can read the repositories.
+
+By splitting tr.im into three applications we can all safely make updates to any one section that does not affect the others. Resources can be allocated based on demand to each based on what's required.
+
+The first one for the tr.im website hosts all models and shared plugin code such that all three applications can access without serious headaches, gems or separate plugin repositories by symbolically linking to trim/vendor/plugins from the API and redirection applications, creating a shared plugins directory. Therefore you need the trim application to run the redirection and API applications.
+
+All tr.im applications are currently at Rails v2.3.4. tr.im does not following some of the common Rails conventions, especially as it pertains to database management. tr.im uses database foreign key constraints to ensure database integrity, trading that for the ease of schema management. Therefore, many of the standard db rake tasks will therefore not work with tr.im.
+
+To setup trim for the first time you will need to create your down database.yml file which we currently link from /etc/trim_db.yml. You will also need to update the config/config.yml which I have used to set application-wide constants. Also, update the environment files as you prefer for the caching store you prefer, and its location, if applicable.
+
+
+The Goal
+========
+TBD
+
+
+The Network Configuration
+=========================
+To distribute incoming requests to the appropriate Rails applicaiton I use HAProxy. It screens requests based on the path name and sends it to the appropraite server set. I currently have two servers for each application (bigger ones for redirections) such that I can push out updates with no disruption. You do not need to use HAProxy, but you will need something at the front end to distribute the requests based on the requested path.
+
+The HAProxy configuration for tr.im is as follows:
+
+frontend tr.im 67.23.26.211:80
+	acl      invalid_ips src 76.120.35.34 65.111.176.34 208.113.196.15
+	block if invalid_ips
+	acl api     path_beg /api/ /v1/
+    acl home    path     / /favicon.ico /robots.txt
+    acl tweet   path     /tweet
+	acl website path_beg /website /retweet /marklet
+	acl account path_beg /signup /login /password /url /statistics /account
+	acl assets  path_beg /javascripts/ /stylesheets/ /scripts/ /feed/ /rss/ /flash/ /images/
+    use_backend trim_api 	 if api
+    use_backend trim_website if home || tweet || website || account || assets
+    default_backend trim_redirects
+	errorfile 400 /usr/local/haproxy/errorfiles/trim/400.http
+	errorfile 403 /usr/local/haproxy/errorfiles/trim/403.http
+	errorfile 408 /usr/local/haproxy/errorfiles/trim/408.http
+	errorfile 500 /usr/local/haproxy/errorfiles/trim/500.http
+	errorfile 502 /usr/local/haproxy/errorfiles/trim/502.http
+	errorfile 503 /usr/local/haproxy/errorfiles/trim/503.http
+	errorfile 504 /usr/local/haproxy/errorfiles/trim/504.http
+
+backend trim_redirects
+	server regent 10.176.102.118:80 maxconn 32 check inter 2000 fastinter 1000 
+	server parrot 10.176.96.148:80  maxconn 32 check inter 2000 fastinter 1000 
+
+backend trim_api
+	server macaw  10.176.97.159:80 maxconn 25 check inter 2000 fastinter 1000 
+	server shrike 10.176.98.18:80  maxconn 25 check inter 2000 fastinter 1000 
+
+backend trim_website
+	server parakeet 10.176.98.37:80 maxconn 15 check inter 2000 fastinter 1000 
+	server lorikeet 10.176.97.72:80 maxconn 15 check inter 2000 fastinter 1000
 
