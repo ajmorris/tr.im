@@ -35,8 +35,8 @@ Initially, the idea is to have people use the tr.im instance for their own purpo
 
 -- New API methods for accessing URL shortening and click data in real-time with notifications
 -- Addition of real-time chart updates using a Rack application and thin server set
--- A new API that is properly RESTful with better statistics access
--- New API methods to take notifications of shortenings of any shortener using the tr.im platform and publish them under tr.im, with aggregate click data for ease of end-user consumption. 
+-- New API for tr.im URLs and statistics that is properly RESTful, with better statistics access
+-- New API methods to take notifications of shortenings of any tr.im-based shortener and publish them in real-time
 
 And anything else the community needs and wants. I will continue to work on tr.im as I can. I also will be adding some additional items that we need for Nambu, when the time comes.
 
@@ -52,7 +52,7 @@ The HAProxy configuration for tr.im is as follows:
 frontend tr.im 67.23.26.211:80
 	acl      invalid_ips src 76.120.35.34 65.111.176.34 208.113.196.15
 	block if invalid_ips
-	acl api     path_beg /api/ /v1/
+    acl api     path_beg /api/ /v1/
     acl home    path     / /favicon.ico /robots.txt
     acl tweet   path     /tweet
 	acl website path_beg /website /retweet /marklet
