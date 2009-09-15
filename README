@@ -22,10 +22,25 @@ All tr.im applications are currently at Rails v2.3.4. tr.im does not following s
 
 To setup trim for the first time you will need to create your down database.yml file which we currently link from /etc/trim_db.yml. You will also need to update the config/config.yml which I have used to set application-wide constants. Also, update the environment files as you prefer for the caching store you prefer, and its location, if applicable.
 
+To get started, after your configuration updates and dataase user setup, in the trim Rails directory run:
 
-The Goal
-========
-TBD
+  rake trim:setup
+
+There are other tr.im rake tasks for various features as well, such as tr.im URL Claiming.
+
+
+The Roadmap
+===========
+Initially, the idea is to have people use the tr.im instance for their own purposes, and fork and extend it if they so choose for service under their own domain names. There are many features that have placeholders in place that just need to be added. I would like also to see development continue under tr.im with the following priorities:
+
+-- New API methods for accessing URL shortening and click data in real-time with notifications
+-- Addition of real-time chart updates using a Rack application and thin server set
+-- A new API that is properly RESTful with better statistics access
+-- New API methods to take notifications of shortenings of any shortener using the tr.im platform and publish them under tr.im, with aggregate click data for ease of end-user consumption. 
+
+And anything else the community needs and wants. I will continue to work on tr.im as I can. I also will be adding some additional items that we need for Nambu, when the time comes.
+
+Adding and working on these features under tr.im will not have the same impact now that the tr.im is damaged, probably fatally. A new better domain name can take the take platform, and we can extend it together to offer more choice and options other than bit.ly, which really does not serve novice users very well. 
 
 
 The Network Configuration
@@ -43,7 +58,7 @@ frontend tr.im 67.23.26.211:80
 	acl website path_beg /website /retweet /marklet
 	acl account path_beg /signup /login /password /url /statistics /account
 	acl assets  path_beg /javascripts/ /stylesheets/ /scripts/ /feed/ /rss/ /flash/ /images/
-    use_backend trim_api 	 if api
+    use_backend trim_api     if api
     use_backend trim_website if home || tweet || website || account || assets
     default_backend trim_redirects
 	errorfile 400 /usr/local/haproxy/errorfiles/trim/400.http
