@@ -1,0 +1,14 @@
+%div.chartbox{ :style => "margin: 0px 0px 20px 135px; width: 625px" }
+  =@clicks_report.get_countries_chart(@trim_preferences.charts, 625, 300).html
+
+%table{ :width => "100%", :style => "margin: 20px 0px 0px 0px" }
+  %tr
+    %td{ :width => "50%", :style => "vertical-align: top" }
+
+      %table.stats{ :width => "100%" }
+        %tr
+          %th{ :colspan => "3" } Visitor Countries
+        =render :partial => "line_name", :collection => @clicks_report.clicks_countries, :locals => { :total => @clicks_report.total_clicks }
+
+    %td{ :width => "50%" }
+      &nbsp;

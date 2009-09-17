@@ -1,0 +1,6 @@
+%a{ :name => "FAQBANNED" }
+%h3 Why has my IP address been banned?
+%p<
+  ==We have automated API protection measures in place to protect our API from excessive requests and attacks. If you are using the API and are repeatedly seeing the #{word_trim} response code for an API rate limit -- code 425 -- and you continue submitting requests 10x in excess of the API limit you are up against, we automatically ban your IP address for 48 hours. You need to check the #{word_trim} response code if you are submitting lots of requests to us from the same IP address.
+%p<
+  ==For initial development against the #{word_trim} API we recommend that you use the <i>sandbox</i> parameter avaiable on the <i>trim_url</i> and <i>trim_simple</i> API methods. When present any calls will not create actual URLs, and therefore will not count towards any API limits. These methods will still return a sample data set for you to experiment and develop with.

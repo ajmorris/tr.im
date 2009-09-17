@@ -1,0 +1,21 @@
+%div#tagline== #{word_trim} User Login
+%div.thincontent{ :style => "width: 100%; padding-bottom: 20px" }
+  %table{ :style => "margin-top: 25px", :align => "center" }
+    %tr
+      %td{ :align => "center", :style => "padding: 50px 15px; vertical-align: top" }
+        -if flash[:notice]
+          %div#notice_login{ :class => "notice" }<= flash[:notice]
+        =render :partial => "form"
+
+      %td{ :style => "vertical-align: top" }
+        %div.trimbox{ :style => "margin: 20px 0px 0px 75px; width: 365px" }
+          %p<
+            ==Login here with your #{word_trim} unique username and password, or #{link_to "signup", signup_path}.
+          %p<
+            You can access your account, create URLs and access your statistics at any time.
+          %p<
+            ==If you authorize one or more Twitter usernames with #{word_trim} you can also #{word_trim} URLs <i>and</i> then tweet them to Twitter in one or two steps, and we <i>never</i> see your Twitter password.
+          %p.section
+            ==Want a unique #{word_trim} account?<br />#{link_to "Signup", signup_path} ...
+          %p<
+            ==<i>Lost</i> your #{word_trim} username or password?<br />#{link_to "Recover them", lost_path} ...

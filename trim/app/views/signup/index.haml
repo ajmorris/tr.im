@@ -1,0 +1,16 @@
+%div#tagline== Create a #{word_trim} Account
+%div#signup
+  %table{ :width => "80%", :align => "center", :style => "margin-top: 35px" }
+    %tr
+      %td{ :align => "center", :valign => "top" }
+        =render :partial => "form"
+      %td
+        %div.trimbox{ :style => "margin: 0px 0px 0px 85px; width: 300px" }
+          %p<
+            ==Signup for a #{word_trim} username to choose your username, and set an email address so that you can recover your account at any time.
+          %p<
+            ==With a #{word_trim} account we can also ensure you never lose track of your #{word_trim}s, securely let you edit their settings, and speed things up for you.
+          %p.section<
+            ==And, of course, everything #{word_trim} is <i>free</i>. Always, forever.
+          %p.section<
+            ==Lost your #{word_trim} username or password? #{link_to "Recover them", "/password/lost/"} ...

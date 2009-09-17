@@ -1,0 +1,4 @@
+page.replace_html 'trim_section_stuff', :partial => 'share'
+page << @menu_resets
+page << "Element.addClassName('menu_share', 'current');"
+page << "setTimeout(\"$('trim_section_stuff').appear({ duration: 0.5 })\", 200)"

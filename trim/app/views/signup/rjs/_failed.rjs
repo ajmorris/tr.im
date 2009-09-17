@@ -1,0 +1,2 @@
+page.replace_html "errors_signup", "#{@user.errors.full_messages[0]} Please try again."
+page << "$('user_email').focus()"

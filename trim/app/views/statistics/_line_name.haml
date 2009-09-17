@@ -1,0 +1,4 @@
+%tr{get_line_name_highlight(line_name_counter)}
+  %td{ :width => "95%" }== #{line_name.to_a[0][0]}
+  %td{ :width =>  "3%", :style => "text-align: right" }= number_with_delimiter(line_name.to_a[0][1])
+  %td{ :width =>  "2%", :style => "text-align: right" }= number_to_percentage((line_name.to_a[0][1].to_f / total.to_f) * 100, :precision => 0)

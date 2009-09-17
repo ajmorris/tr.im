@@ -1,0 +1,4 @@
+%a{ :name => "FAQCODES" }
+%h3 How do these API response codes work? Are they HTTP codes?
+%p<
+  ==There are two types of response codes when working with the #{word_trim} API: 1) the HTTP response code; and 2) the #{word_trim} API result code. We decided not to mix the two. Unless there is a genuine HTTP or network error, or excessive requests beyond the API rate limit, the #{word_trim} API will always respond with a 200 HTTP code. The #{word_trim} #{link_to "response codes", "#CODES" } with the <i>status</i> response data set then indicate the result of the request as it was completed <i>within</i> #{word_trim}. You need to check these response codes, depending on the method you are working with, to ensure the requested was completed properly.

@@ -1,0 +1,33 @@
+%a{ :name => "shorteners" }
+%h3 shorteners
+%p<
+  ==This method will return the domain names currently configured as domain name shortening services that #{word_trim} will not permit to be present within the destination URL.
+%p
+  %span.linetitle< URL:
+  ==http://api.#{word_trim}/v1/shorteners.&lt;format&gt;
+  %br
+  %span.linetitle< Method:
+  GET
+  %br
+  %span.linetitle< Formats:
+  xml, json
+  %br
+  %span.linetitle< Parameters:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_apikey_o"
+%p
+  %span.linetitle< Response:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_status"
+    %tr
+      %td.optional domains
+      %td== The list of domain names configured within #{word_trim} as disallowed shortener domain names.
+%p
+  %span.linetitle< Notes:
+%p.tight
+  %ul
+    %li== The list is very likely some missing domain shortening services, since they are very many, regional and otherwise, with new ones appearing all the time. If there is one missing please email #{mail_to "api@tr.im"} and we will add it.
+
+=render :partial => "shared/separator"

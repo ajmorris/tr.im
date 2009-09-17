@@ -1,0 +1,56 @@
+/* == ------------------------- INFO BUBBLES ------------------------- == */
+.bubble { position: relative; width: 20px; height: 20px; overflow: visible; }
+
+a.infolink { outline: 0px; display: block; width: 20px; height: 20px; overflow: hidden; background: url(/images/bubble/infolink.gif) no-repeat; }
+a.infolink:link, a.infolink:visited { background-position: 0px 0px; }
+a.infolink:hover, a.infolink:active { background-position: 0px -40px; }
+
+a.infoclose {
+  outline: 0px;
+  position: absolute;
+  display: block;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  background: url(/images/bubble/infoclose.gif) no-repeat;
+}
+div.infopopA a.infoclose { right: 8px; top: 9px; }
+div.infopopB a.infoclose { left: 6px; top: 7px; }
+a.infoclose:link, a.infoclose:visited { background-position: 0px 0px; }
+a.infoclose:hover, a.infoclose:active { background-position: 0px -40px; }
+
+div.infopopA { margin: 10px; position: absolute; top: -25px; left: 10px; /* display: none; */ }
+div.infopopB { margin: 10px; position: absolute; top: -25px; right: 10px; /* display: none; */ }
+
+/* == -------------------------- POINTING < -------------------------- == */
+div.infopopA div.ip_top { background: url(/images/bubble/ip_tl.png) no-repeat bottom left; padding: 0px; width: 100%; }
+div.infopopA div.ip_top div.ip_right { background: url(/images/bubbles/ip_tr.png) no-repeat bottom right; height: 12px; margin-left: 31px; }
+div.infopopA div.ip_middle { background: url(/images/bubble/ip_l.png) no-repeat; clear: both; width: 100%; }
+div.infopopA div.ip_middle div.ip_right { background: url(/images/bubble/ip_r.png) repeat-y right; margin-left: 24px; }
+div.infopopA div.ip_middle div.ip_right div.ip_content {
+  background: url(/images/bubble/ip_bg.png) repeat top left;
+  margin-right: 8px;
+  padding: 6px 18px 5px 14px;
+}
+div.infopopA div.ip_bottom { background: url(/images/bubble/ip_bl.png) no-repeat top left; clear: both; padding: 0px; width: 100%; }
+div.infopopA div.ip_bottom div.ip_right { background: url(/images/bubble/ip_br.png) no-repeat top right; height: 14px; margin-left: 31px; }
+
+/* == -------------------------- POINTING < -------------------------- == */
+div.infopopB div.ip_top { background: url(/images/bubble/ipB_tl.png) no-repeat bottom left; padding: 0px; width: 100%; }
+div.infopopB div.ip_top div.ip_right { background: url(/images/bubble/ipB_tr.png) no-repeat bottom right; height: 12px; margin-left: 31px; }
+div.infopopB div.ip_middle { background: url(/images/bubble/ipB_l.png) no-repeat; clear: both; width: 100%; }
+div.infopopB div.ip_middle div.ip_right { background: url(/images/bubble/ipB_r.png) no-repeat top right; margin-left: 0px; }
+div.infopopB div.ip_middle div.ip_right div.ip_content {
+  background: url(/images/bubble/ip_bg.png) repeat top left;
+  margin: 0px 24px 0px 8px;
+  padding: 6px 18px 5px 14px;
+}
+div.infopopB div.ip_bottom { background: url(/images/bubble/ipB_bl.png) no-repeat top left; clear: both; padding: 0px; width: 100%; }
+div.infopopB div.ip_bottom div.ip_right { background: url(/images/bubble/ipB_br.png) no-repeat top right; height: 14px; margin-left: 31px; }
+
+/* == ------------------------ SETTING WIDTHS ------------------------ == */
+div.ip200 { width: 200px; }
+div.ip300 { width: 300px; }
+div.ip400 { width: 400px; }
+div.ip500 { width: 500px; }
+div.ip600 { width: 600px; }

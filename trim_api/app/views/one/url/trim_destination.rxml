@@ -1,0 +1,8 @@
+xml.instruct! :xml, :version => "1.0"
+xml.trim {
+  xml.status(@api["status"])
+  if @api["status"]["result"] == "OK"
+    xml.reference(@api["destination"])
+    xml.destination(@api["destination"])
+  end
+}

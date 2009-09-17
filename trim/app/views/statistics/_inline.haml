@@ -1,0 +1,38 @@
+%table{ :align => "center", :width => "95%", :style => "margin: 10px 0px" }
+  %tr
+    %td{ :colspan => "2", :style => "padding-bottom: 30px; text-align: center" }
+      =render :partial => "dates", :locals => { :width => @inline_width, :minus => 25, :mdbot => 3, :mdtop => ClicksReport::MAX_DAYS_BARS, :max_days => 48 }
+  %tr
+    %td{ :colspan => "2", :style => "padding-bottom: 30px; text-align: center" }
+      %div.chartbox{ :style => "margin: 0px 0px 25px 0px; width: #{@inline_width}px" }
+        =@clicks_report.get_countries_chart(@trim_preferences.charts, @inline_width, 225).html
+      %div.chartbox{ :style => "margin: 0px 0px 25px 0px; width: #{@inline_width}px" }
+        =@clicks_report.get_referers_chart(@trim_preferences.charts, @inline_width, 225).html
+  %tr
+    %td{ :colspan => "2", :style => "padding-bottom: 30px; text-align: center" }
+      %div.chartbox{ :style => "margin: 0px; width: #{@inline_width}px" }
+        =@clicks_report.get_browsers_chart(@trim_preferences.charts, @inline_width, 225).html
+      %div.chartbox{ :style => "margin: 0px; width: #{@inline_width}px" }
+        =@clicks_report.get_platforms_chart(@trim_preferences.charts, @inline_width, 225).html
+
+%div.seperator
+
+%table.stats
+  %tr
+    %th{ :colspan => "2" } Visitor Countries
+    =render :partial => "line_name", :collection => @clicks_report.clicks_countries, :locals => { :total => @clicks_report.total_clicks }
+
+%table.stats
+  %tr
+    %th{ :colspan => "2" }= t(:url_title_referers, :scope => :charts)
+    =render :partial => "line_referer", :collection => @clicks_report.clicks_referers
+
+%table.stats
+  %tr
+    %th{ :colspan => "2" } Visitor Browsers
+  =render :partial => "line_name", :collection => @clicks_report.clicks_browsers, :locals => { :total => @clicks_report.total_clicks }
+
+%table.stats
+  %tr
+    %th{ :colspan => "2" } Visitor Platforms
+  =render :partial => "line_name", :collection => @clicks_report.clicks_platforms, :locals => { :total => @clicks_report.total_clicks }

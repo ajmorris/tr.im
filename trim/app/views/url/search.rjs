@@ -1,0 +1,3 @@
+page << "$('q').activate()"
+page.replace_html 'urls_results', :partial => "shared/urls/search_result"
+page.replace_html 'urls_title', "#{word_trim} URLs Search Result"

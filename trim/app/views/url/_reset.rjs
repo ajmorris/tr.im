@@ -1,0 +1,3 @@
+page.replace_html "ur_#{@trim_url_id}", :partial => "shared/urls/reset_done"
+page.replace_html "click_count_#{@trim_url_id}", "0"
+page << "setTimeout(\"$('ur_#{@trim_url_id}').fade({ duration: 0.5 })\", 800)"

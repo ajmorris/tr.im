@@ -1,0 +1,26 @@
+%a{ :name => "verify" }
+%h3 verify
+%p<
+  ==This method will return whether or not a username/password combination is a valid #{word_trim} account's username and password.
+%p
+  %span.linetitle< URL:
+  ==http://api.#{word_trim}/v1/verify.&lt;format&gt;
+  %br
+  %span.linetitle< Method:
+  GET or POST
+  %br
+  %span.linetitle< Formats:
+  xml, json
+  %br
+  %span.linetitle< Parameters:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_apikey_o"
+    =render :partial => "welcome/api/inline_account"
+%p
+  %span.linetitle< Response:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_status"
+
+=render :partial => "shared/separator"

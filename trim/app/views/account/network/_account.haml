@@ -1,0 +1,9 @@
+%tr
+  %td= account.network.name
+  %td= account.username
+  %td Authorized
+  %td
+    %div#progress_delete.invisible<
+      =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => "", :style => "margin: 5px 0px 0px 20px"
+  %td{ :colspan => "2" }<
+    %a#button_delete_small.buttonset{ :href => "javascript:void(0)", :onclick => remote_function(:url => account_network_path(:id => account.id), :method => :delete, :loading => "$('progress_delete').setStyle({visibility: 'visible'})", :complete => "$('progress_delete').setStyle({visibility: 'hidden'})") }

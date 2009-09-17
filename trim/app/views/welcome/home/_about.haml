@@ -1,0 +1,17 @@
+%div{ :style => "clear: both" }
+  %table{ :width => "100%", :style => "margin: 20px 0px 0px 0px" }
+    %tr
+      %td{ :width => "40%", :align => "center", :valign => "top", :style => "padding: 0px 20px" }
+        %p<
+          ==If you use FireFox, Safari or Opera, you can drag and drop one of our #{link_to "custom bookmarklets", extras_url} to your browser bar.
+        %p.tight<
+          ==And for even more convenient access to #{word_trim} URLs, download our #{link_to "Firefox extension", WEBSITE_CONFIG['firefox_url'], :target => "_blank"} or #{link_to "Dashboard Widget", extras_url}.
+
+      %td{ :width => "25%", :style => "text-align: center" }
+        =link_to image_tag("/images/misc/twitter_follow_smaller.png", :size => "185x75", :alt => "Follow tr.im on Twitter"), "http://twitter.com/trimurls/", :target => "_blank"
+
+      %td{ :width => "35%", :align => "center", :valign => "top", :style => "padding: 0px 20px" }
+        %p<
+          ==New to #{word_trim}? Want to shorten URLs for services like #{link_to "Twitter", "http://twitter.com/", :target => "_blank"} with great analytics and #{link_to "add-ons", extras_url}? Give #{word_trim} a try ...
+        %p.center.tight<
+          ==#{link_to image_tag("/images/misc/account_create.png", :size => "180x28", :alt => "Create a tr.im Account", :style => "margin-top: 10px"), signup_url}

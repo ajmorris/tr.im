@@ -1,0 +1,42 @@
+%div#sidenav
+  -if @sb == "networks"
+    %a.sidecurrent{ :href => account_network_index_path }<
+      %span Authorizations
+  -else
+    %a{ :href => account_network_index_path }<
+      %span Authorizations
+
+  -if @sb == "claims"
+    %a.sidecurrent{ :href => trimclaims_path }<
+      %span Claim URLs
+  -else
+    %a{ :href => trimclaims_path }<
+      %span Claim URLs
+
+  -if @sb == "preferences"
+    %a.sidecurrent{ :href => edit_account_preference_path(@trim_preferences) }<
+      %span Preferences
+  -else
+    %a{ :href => edit_account_preference_path(@trim_preferences) }<
+      %span Preferences
+
+  -if @sb == "timezone"
+    %a.sidecurrent{ :href => edit_account_timezone_path(@user) }<
+      %span Time Zone
+  -else
+    %a{ :href => edit_account_timezone_path(@user) }<
+      %span Time Zone
+
+  -if @sb == "email"
+    %a.sidecurrent{ :href => account_email_path(@user) }<
+      %span Email Address
+  -else
+    %a{ :href => account_email_path(@user) }<
+      %span Email Address
+
+  -if @sb == "profile"
+    %a.sidecurrent{ :href => account_profile_index_path }<
+      %span Account Profile
+  -else
+    %a{ :href => account_profile_index_path }<
+      %span Account Profile

@@ -1,0 +1,30 @@
+-tmps_load = "$('progress_username').setStyle({visibility: 'visible'}); $('errors_username').update('')"
+-tmps_comp = "$('progress_username').setStyle({visibility: 'hidden'})"
+-tmps_html = { :method => :put, :id => "TRIMUSERN" }
+-form_remote_tag :url => account_username_path(@user), :html => tmps_html, :loading => tmps_load, :complete => tmps_comp do
+  %table.account{ :align => "center", :width => "50%", :style => "margin: 25px auto" }
+    %tr
+      %td{ :colspan => "2" }<
+        %div#errors_username.errors
+    %tr
+      %td<
+        %label{ :for => "user[name]" } Name:
+      %td= text_field :user, :name, :size => "20", :maxlength => "48"
+    %tr
+      %td{ :colspan => "2", :style => "padding: 2px" }<
+    %tr
+      %td<
+        %label{ :for => "user[login]"}== #{word_trim} Username:
+      %td= text_field :user, :login, :size => "20", :maxlength => "48"
+    %tr
+      %td{ :colspan => "2", :style => "padding: 2px" }<
+    %tr
+      %td{ :colspan => "2", :align => "right" }
+
+        %table{ :align => "right" }
+          %tr
+            %td<
+              %div#progress_username{ :align => "center", :style => "visibility: hidden" }<
+                =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => ""
+            %td{ :align => "right" }<
+              =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"

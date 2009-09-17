@@ -1,0 +1,2 @@
+page.replace_html 'errors_report', 'Please insert a sample spam message<br />before clicking SUBMIT.'
+page << "$('report_text').focus()"

@@ -1,0 +1,11 @@
+xml.instruct! :xml, :version => "1.0"
+xml.shorteners {
+  xml.status(@api["status"])
+  if @api["status"]["result"] == "OK"
+    xml.domains {
+      for domain in @api["domains"]
+        xml.domain(domain)
+      end
+    }
+  end
+}

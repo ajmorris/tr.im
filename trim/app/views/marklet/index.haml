@@ -1,0 +1,14 @@
+%div#tagline== #{word_trim} URL Share ...
+%div{ :width => "100%", :style => "margin-top: 15px" }
+  -if not @marklet_errors
+    -if @trim_preferences.trim_tweet?
+      %div#trim_section_share= render :partial => "tweet/retweet_table"
+    %div#trim_section_result= render :partial => "shared/urls/result"
+
+  -else
+    %div.notice{ :style => "margin-top: 35px" }
+      ==There was a problem with your #{word_trim} marklet request.
+    %p.center
+      ==You can only #{word_trim} URLs via the bookmarklet from other websites, while you are visiting them.<br />When at #{word_trim} the bookmarklet has nothing to #{word_trim}!
+    %p.center.tight
+      ==Happy #{word_trimming}!

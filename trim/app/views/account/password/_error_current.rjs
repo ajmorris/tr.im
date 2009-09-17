@@ -1,0 +1,5 @@
+page.replace_html 'errors_password', error_text
+page << "$('data_new_confirm').setStyle({border: '1px solid #A5C1D1'})"
+page << "$('data_new').setStyle({border: '1px solid #A5C1D1'})"
+page << "$('data_old').setStyle({border: '1px solid #97391D'})"
+page << "$('data_old').focus()"

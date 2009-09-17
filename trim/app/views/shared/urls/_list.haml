@@ -1,0 +1,16 @@
+%table.urltable
+  %tr
+    %th.url Original URL
+    %th{ :style => "white-space: nowrap" }== #{word_trim} URL
+    %th Clicks
+    %th Stats
+    %th{ :colspan => "4" } Options
+    %th== #{word_trimmed}
+  =render :partial => "shared/urls/row", :collection => @user_urls, :as => :trim_url
+  -if @user_urls_total > @trim_preferences.urls_per_page
+    %tr
+      %td{ :colspan => "9", :style => "border-top: 1px solid #A5C1D1" }
+        %table{ :align => "center" }
+          %tr
+            %td{ :style => "white-space: nowrap" }
+              =will_paginate @user_urls, :params => { :controller => "welcome" }

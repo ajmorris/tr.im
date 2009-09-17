@@ -1,0 +1,29 @@
+%table{ :width => "90%", :align => "center", :border => "0", :style => "margin: 10px auto" }
+  %tr
+    %td
+      %div#inline_oauth_authorize
+        %p.smaller.center
+          ==You can authorize an additional Twitter account to use here by clicking AUTHORIZE. You will authorize #{word_website} at Twitter's website.
+        %p.smaller.center
+          You can also re-authorize an account if you are seeing authorization errors for it.
+        %p.smaller.center
+          Once you have completed this quick one-step process you will be able to reload your available accounts and continue.
+      %div#inline_oauth_reload{ :style => "display: none" }
+        %p.center.bolded
+          All done?
+        %p.smaller.center
+          If your authorization process for the additional account is completed, click RELOAD.<br />If you need to try again click AUTHORIZE.
+
+    %td
+      %div#progress_reload{ :align => "center", :style => "visibility: hidden" }<
+        =image_tag "/images/indicators/standard.gif", :size => "18x18", :style => "margin: 5px"
+
+    %td{ :style => "padding: 0px 10px 0px 0px" }
+      %div#inline_oauth_button_auth
+        %a#button_authorize_small.buttonset{ :href => oainline_path, :target => "_blank", :onclick => "setTimeout(\"$('inline_oauth_authorize').fade({ duration: 0.25 })\", 250); setTimeout(\"$('inline_oauth_reload').appear({ duration: 0.25 })\", 500)" }
+      %div
+        %p.tight &nbsp;
+      %div#inline_oauth_button_reload
+        %a#button_reload_small.buttonset{ :href => "javascript:void(0)", :onclick => remote_function(:url => oaauthed_path, :loading => "$('progress_reload').setStyle({visibility: 'visible'})", :complete => "$('progress_reload').setStyle({visibility: 'hidden'})") }
+
+=render :partial => "shared/separator"

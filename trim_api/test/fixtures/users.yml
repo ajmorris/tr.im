@@ -1,0 +1,16 @@
+
+fred:
+  id: 1
+  name: Fred Flintstone
+  login: fred
+  email: fred@flintstone.com
+  password: test
+  last_ip: 127.0.0.1
+  
+wilma:
+  id: 2
+  name: Wilma Flintstone
+  login: wilma
+  email: wilma@flintstone.com
+  password: test
+  last_ip: 127.0.0.1

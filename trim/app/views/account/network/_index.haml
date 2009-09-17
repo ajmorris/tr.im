@@ -1,0 +1,22 @@
+%p<
+  ==Manage your Twitter accounts here. You can configure new ones, and grant #{word_website} permission to access them, <i>without</i> giving us your Twitter password, ever. You can remove accounts you no longer want to use with #{word_website} at any time.
+
+%div#oauth_accounts
+  =render :partial => "accounts"
+
+=render :partial => "shared/separator"
+%p.center{ :style => "margin: 15px 0px" }<
+  ==To authorize or re-authorize a Twitter account with #{word_website}, click AUTHORIZE. We will send you to Twitter to grant #{word_website} permission to access your account. Twitter will then send us a unique token to use, and return you to #{word_website}.
+%p.center You will need to login to Twitter with the account you want to authorize access to.
+%p<
+  %a#button_authorize.buttonset{ :href => trim_authorize_path }
+
+=render :partial => "shared/separator"
+
+%h3 More Explanation ...
+%p<
+  ==#{word_website} supports a new service-specific authorization system that Twitter now uses to protect your Twitter password. With this new system, called <i>OAuth</i>, we do not need to see or store your Twitter password, ever.
+%p<
+  ==At Twitter's website you explicitly authorize #{word_website} to access your Twitter account, and they give us a secret code to use on your behalf. You can revoke these permissions at any time.
+%p<
+  ==It sounds tricky and complicated, but it is really not. It simple, quick, and protects your account.

@@ -1,0 +1,71 @@
+!!! 1.1
+%html
+  %head
+    %title= @pt
+    %link{ :rel => "icon", :type => "image/png", :href => "/favicon.ico" }
+    %meta{ "http-equiv" => "content-type", :content => "text/html; charset=UTF-8" }
+    %meta{ :name => "keywords", :content => t(:keywords, :scope => :meta) }
+    %meta{ :name => "description", :content => t(:description, :scope => :meta) }
+    =auto_discovery_link_tag(:rss, WEBSITE_CONFIG['website_blog_feed'], { :title => "#{WEBSITE_CONFIG['website_domain']} Blog" })
+    =stylesheet_link_tag "application", "bubble"
+    =javascript_include_tag "libs/prototype", "libs/s/builder", "libs/s/effects", "libs/jquery-1.3.1.min", "application", :cache => "trim" 
+    /[if lt IE 7]
+      %link{ :href => "/stylesheets/bubbleIE.css", :media => "screen", :rel => "stylesheet", :type => "text/css" }
+      %script{ :defer => true, :type => "text/javascript", :src => "/javascripts/pngfix.js" }<
+    %script{ :type => "text/javascript" }
+      -@trim_url ? get_display_url(@trim_url) : clip_url = String.new
+      :plain
+        jQuery.noConflict();
+        jQuery(document).ready(function() {
+          if (top.location != self.location) { top.location.replace(self.location); }
+          if (loPanelExists('URLF_url')) {
+            $('URLF_url').focus();
+            $('URLF_url').observe('keypress', function(evt) {
+              var charCode = (evt.which) ? evt.which : evt.keyCode;
+              if (charCode == "13") { submitTrimUrlForm(); }
+            });
+          }
+          if (document.getElementById('TWEET_url') != null) { clipboardCopy('#{clip_url}'); $('TWEET_url').focus(); }
+
+          if (document.getElementById('email_new') != null) { $('email_new').focus(); }
+          if (document.getElementById('user_login') != null) { $('user_login').focus(); }
+          if (document.getElementById('user_password') != null) { $('user_password').focus(); }
+          if (document.getElementById('interim_password') != null) { $('interim_password').focus(); }
+
+          if (document.getElementById('data_old') != null) { $('data_old').focus(); }
+          if (document.getElementById('report_text') != null) { $('report_text').focus(); }
+
+          if (document.getElementById('TWEET_text') != null) { $('TWEET_text').focus(); }
+
+      -if @trim_preferences.autosubmit_tweet?
+        :plain
+          if (document.getElementById('TWEET_url') != null) {
+            $('TWEET_url').observe('keypress', function(evt) {
+              var charCode = (evt.which) ? evt.which : evt.keyCode;
+              if (charCode == "13") { sTF(); }
+            });
+          }
+      :plain
+        });
+  %body
+    %div#header
+      %div#logo=link_to image_tag("/images/main/logo_home.png", :size => "150x83", :alt => "#{WEBSITE_CONFIG['website_domain']}"), root_path
+      %div#topnav
+        =render :partial => "shared/tabs"
+        =render :partial => "shared/sites"
+        =render :partial => "shared/nav"
+      =render :partial => "shared/status"
+
+    %div.trimcontainer{ :align => "center" }
+      =yield :layout
+    %div.trimcontainerbottom{ :align => "center" }
+    =render :partial => "shared/footer"
+
+    -if Rails.development?
+      %script{ :type => "text/javascript" }
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      %script{ :type => "text/javascript" }
+        ==var pageTracker = _gat._getTracker(#{WEBSITE_CONFIG["analytics"]});
+        pageTracker._initData();
+        pageTracker._trackPageview();

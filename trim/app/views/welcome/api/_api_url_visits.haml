@@ -1,0 +1,35 @@
+%a{ :name => "url_visits" }
+%h3 url_visits
+%p
+  ==This method will return visitation details specific to a single #{word_trim} URL. This enables the ability to construct a #{word_trim} URL statistics page in a style and colour scheme that matches your application. An API key is required to use this API method.
+%p
+  %span.linetitle< URL:
+  ==http://api.#{word_trim}/v1/url_visits.&lt;format&gt;
+  %br
+  %span.linetitle< Method:
+  GET
+  %br
+  %span.linetitle< Formats:
+  xml, json
+  %br
+  %span.linetitle< Parameters:
+  %br
+  %table.apimethod
+    %tr
+      %td.required reference
+      %td.required Required
+      %td== The #{word_trim} URL's unique reference string.
+    =render :partial => "welcome/api/inline_apikey_r"
+%p
+  %span.linetitle< Response:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_status"
+    %tr
+      %td.optional visits
+      %td== The date, time, and country for each visit.
+    %tr
+      %td.optional total_visits
+      %td== The total number of visits the referenced #{word_trim} URL has had.
+
+=render :partial => "shared/separator"

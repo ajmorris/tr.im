@@ -1,0 +1,3 @@
+:
+cd /usr/local/rails/trim
+rake RAILS_ENV=production ops:resets --trace

@@ -1,0 +1,4 @@
+-if has_urls?
+  =render :partial => "shared/form/select"
+-else
+  %div.notice== You do not yet have any #{word_trim} URLs you can share.

@@ -1,0 +1,1 @@
+page.replace_html 'oauth_accounts', :partial => "accounts"

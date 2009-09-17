@@ -1,0 +1,39 @@
+%a{ :name => "trim_reference" }
+%h3 trim_reference
+%p<
+  ==This method will return the reference code for a #{word_trim} URL, if owned by the authenticated user.
+%p
+  %span.linetitle< URL:
+  ==http://api.#{word_trim}/v1/trim_reference.&lt;format&gt;
+  %br
+  %span.linetitle< Method:
+  GET or POST
+  %br
+  %span.linetitle< Formats:
+  xml, json
+  %br
+  %span.linetitle< Parameters:
+  %br
+  %table.apimethod
+    %tr
+      %td.required trimpath
+      %td.required Required
+      %td== The #{word_trim} URL's unique path string.
+    =render :partial => "welcome/api/inline_apikey_o"
+    =render :partial => "welcome/api/inline_account"
+%p
+  %span.linetitle< Response:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_status"
+    %tr
+      %td.optional reference
+      %td== The #{word_trim} URL's reference code.
+%p
+  %span.linetitle< Example:
+  %p
+    %ul
+      %li== If the #{word_trim} in question is http://#{word_trim}/abc then you use this API method, with HTTP authentication, as follows:
+      %li== &nbsp; &nbsp; http://api.#{word_trim}/api/trim_reference.json?trimpath=abc&username=fred&password=wilma
+
+=render :partial => "shared/separator"

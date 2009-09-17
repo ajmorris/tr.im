@@ -1,0 +1,12 @@
+%div#login_status
+  -if has_session?
+    -if @user.source == "MANUAL"
+      %div#login_status_login.content== #{h @user.login}
+      %div#login_status_email.content== #{h @user.email} 
+    -else
+      -if @user.has_oauth_at_website?(WEBSITE_CONFIG['website_id'])
+        %div.content== #{h @user.oauths[0].username} | twitter.com
+
+  -else
+    -if not controller.controller_name == "signup"
+      ==#{link_to image_tag("/images/misc/account_create.png", :size => "180x28", :alt => "Create a tr.im Account"), signup_url}

@@ -1,0 +1,9 @@
+page.replace_html 'trim_section_share', :partial => 'shared/urls/result_share'
+page.replace_html 'trim_section_result', :partial => 'shared/urls/result'
+page << "$('trim_section_stuff').fade({ duration: 0.2 })"
+page << "setTimeout(\"$('trim_section_share').appear({ duration: 0.5 })\", 250)"
+page << "setTimeout(\"$('trim_section_result').appear({ duration: 0.5 })\", 250)"
+page << @trim_resets
+page << @menu_resets
+page << "Element.addClassName('menu_share', 'current')"
+page << "clipboardCopy('#{get_trim_url(@trim_url)}')"

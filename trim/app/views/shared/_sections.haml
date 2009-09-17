@@ -1,0 +1,15 @@
+-js_load = "$('trim_section_share').fade({ duration: 0.2 }); $('trim_section_result').fade({ duration: 0.2 }); $('trim_section_stuff').fade({ duration: 0.2 }); setTimeout(\"$('trim_section_progress').appear({ duration: 0.2 })\", 200)"
+-js_comp = "$('trim_section_progress').fade({ duration: 0.2 })"
+%div#menubar
+  %ul#menubar_left
+    -if beta?
+      %li
+        %a#menu_destinations{ :href => "javascript:void(0)", :onclick => remote_function(:url => section_destinations_path, :loading => js_load, :complete => js_comp) } Destination URLs
+  %ul#menubar_right
+    %li
+      %a#menu_share{ :href => "javascript:void(0)", :onclick => remote_function(:url => section_share_path, :loading => js_load, :complete => js_comp) } Share
+    -if beta?
+      %li
+        %a#menu_summaries{ :href => "javascript:void(0)", :onclick => remote_function(:url => section_summaries_path, :loading => js_load, :complete => js_comp) } Summaries
+    %li
+      %a#menu_urls.current{ :href => "javascript:void(0)", :onclick => remote_function(:url => section_urls_path, :loading => js_load, :complete => js_comp) } Your tr.ims

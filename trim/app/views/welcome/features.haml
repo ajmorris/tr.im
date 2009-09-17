@@ -1,0 +1,35 @@
+%div#tagline== #{word_trim} Features
+%table.features{ :width => "80%", :align => "center" }
+  %tr
+    %td{ :style => "text-align: center" }<
+      =image_tag "/images/misc/features_extensions.jpg", :size => "76x76", :alt => "Extensions"
+    %td
+      %h4 Great Extensions
+      %p<
+        ==We want #{word_trim} to be available everywhere you want it to be! So we have created lots of #{link_to "extra tools", extras_url} you can use with with your free #{word_trim} service: a #{link_to "Firefox extension", WEBSITE_CONFIG['firefox_url'], :target => "_blank"}, #{link_to "Dashboard Widget", extras_url}, and #{link_to "nifty bookmarklets", extras_url}. Once we release a few more -- currently under development -- we will support every platform, a key goal here at #{word_trim}.
+
+  %tr
+    %td{ :style => "text-align: center" }<
+      =image_tag "/images/misc/features_fast.jpg", :size => "76x76", :alt => "Fast"
+    %td
+      %h4 Fast
+      %p<
+        ==#{word_trim}'s design emphasizes speed. Not just as in server fast, but as in <i>process</i> fast. We looked for something simple: to be at a website, think "this is cool," <i>but</i> then shorten the URL, tweet it, and be back at the starting point, all without ever touching the mouse. But as it always goes, if you want something done right, you gotta do it yourself. So, we now have #{word_trim} and are very happy.
+
+  %tr
+    %td{ :style => "text-align: center" }<
+      =image_tag "/images/misc/features_statistics.jpg", :size => "76x76", :alt => "Statistics"
+    %td
+      %h4 Statistics
+      %p<
+        ==We track your #{word_trim} URL's visits: when they happened, the visitor's location, the refering website, and, simply, the number of clicks that it got. With #{word_trim} statistics, you know a link's popularity.
+
+  %tr
+    %td{ :style => "text-align: center; border: none" }<
+      =image_tag "/images/misc/features_prefs.jpg", :size => "76x76", :alt => "Lots of Preferences"
+    %td{ :style => "border: none" }
+      %h4 Lots o' Preferences
+      %p<
+        ==We are creating lots of preferences so you can customize #{word_trim}'s behaviour to be exactly as <i>you</i> want it to be. As we continue to work on #{word_trim} the level of customization is only going to get better and better.
+      -if not has_session?
+        =link_to image_tag("/images/misc/account_signup.png", :size => "70x29", :alt => "Signup", :style => "float: right"), signup_path

@@ -1,0 +1,37 @@
+-tmps_load = "$('progress_signup').setStyle({visibility: 'visible'}); $('errors_signup').update('')"
+-tmps_comp = "$('progress_signup').setStyle({visibility: 'hidden'})"
+-tmps_url = url_for(:controller => "signup", :action => "create")
+-form_remote_tag :url => tmps_url, :html => { :id => "URLF" }, :loading => tmps_load, :complete => tmps_comp do 
+  %div{ :id => "errors_signup", :class => "errors" }<
+  %table.standard{ :width => "90%", :align => "center" }
+    %tr
+      %td.toptext{ :colspan => "3" }<
+        ==Enter the username you would like, with letters and numbers only.
+    %tr
+      %td{ :width => "60%" }<
+        %label{ :for => "user[login]" } Login:
+      %td{ :width => "10%" }= text_field :user, :login, :size => "20", :maxlength => "48", :value => ""
+      %td{ :width => "30%" } &nbsp;
+    %tr
+      %td<
+        %label{ :for => "user[password]" } Password:
+      %td= password_field :user, :password, :size => "20", :maxlength => "48", :value => ""
+      %td &nbsp;
+    %tr
+      %td.text{ :colspan => "3" }<
+        ==Enter your email address so you can recover your account if needed. You can also use it to login.
+    %tr
+      %td<
+        %label{ :for => "user[email]" } Email Address:
+      %td= text_field :user, :email, :size => "20", :maxlength => "48", :value => ""
+      %td &nbsp;
+    %tr
+      %td{ :colspan => "2" }
+        %table.submit
+          %tr
+            %td<
+              %div#progress_signup{ :style => "float: right; visibility: hidden" }<
+                =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => ""
+            %td<
+              =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"
+      %td &nbsp;

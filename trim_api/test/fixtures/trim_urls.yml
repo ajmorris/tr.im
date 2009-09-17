@@ -1,0 +1,10 @@
+
+google:
+  id: 1
+  shortened_id: 1
+  reference: 12345678910
+
+unclaimed:
+  id: 2
+  shortened_id: 2
+  reference: abcdefghiju

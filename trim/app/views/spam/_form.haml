@@ -1,0 +1,21 @@
+-tmps_load = "$('progress_report').setStyle({visibility: 'visible'}); $('errors_report').update('')"
+-tmps_comp = "$('progress_report').setStyle({visibility: 'hidden'})"
+-form_remote_tag :url => spamr_path, :html => { :id => "SPR", :name => "SPR" }, :loading => tmps_load, :complete => tmps_comp do
+  %table{ :align => "center" }
+    %tr
+      %td<
+        %h1 Spam Content
+      %td<
+        %div#errors_report.errors<
+    %tr
+      %td{ :colspan => "2" }><= text_area :report, :text, :size => "50x14"
+    %tr
+      %td{ :colspan => "2", :align => "right" }
+
+        %table{ :align => "right" }
+          %tr
+            %td
+              %div#progress_report{ :align => "right", :style => "padding: 5px 0px 0px 0px; visibility: hidden" }
+                =image_tag "/images/indicators/standard.gif", :size => "18x18"
+            %td{ :style => "padding: 0px 25px 0px 10px" }<
+              =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"

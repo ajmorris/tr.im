@@ -1,0 +1,14 @@
+
+google:
+  id: 1
+  url_id: 1
+  origin_id: 1
+  shortener_id: 1
+  surl: abcd
+
+unclaimed:
+  id: 2
+  url_id: 1
+  origin_id: 2
+  shortener_id: 1
+  surl: efgh

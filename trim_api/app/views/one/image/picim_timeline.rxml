@@ -1,0 +1,21 @@
+xml.instruct! :xml, :version => "1.0"
+xml.visits {
+  xml.status(@api["status"])
+  if @api["status"]["result"] == "OK"
+    xml.image_count(@api["image_count"])
+    if @api.has_key?("picims")
+      xml.picims {
+        for image in @api["picims"]
+          xml.item("url" => image["url"]) {
+            xml.image_url_thumbnail(image["image_url_thumbnail"])
+            xml.image_url_iphone(image["image_url_iphone"])
+            xml.upload_from(image["uploaded_from"])
+            xml.upload_at(image["uploaded_at"])
+            xml.uploaded_at_date_time(image["uploaded_at_date_time"])
+            xml.uploaded_at_inwords(image["uploaded_at_inwords"])
+          }
+        end
+      }
+    end
+  end
+}

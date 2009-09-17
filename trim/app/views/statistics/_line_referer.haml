@@ -1,0 +1,14 @@
+-if (line_referer_counter % 2) == 0
+  -rwHash = { :class => "statsnorm", :onmouseover => "this.className='statshighlight'", :onmouseout => "this.className='statsnorm'" }
+-else rwHash = { :class => "statsdark", :onmouseover => "this.className='statshighlight'", :onmouseout => "this.className='statsdark'" }
+
+-referer = line_referer.to_a[0][0]
+-referer = referer[0,84] if referer.length > 85
+
+%tr{rwHash}
+  %td
+    -if referer.include?("//")
+      =link_to referer, referer, :target => "_blank", :class => "krw"
+    -else
+      =referer
+  %td{ :style => "text-align: right" }= number_with_delimiter(line_referer.to_a[0][1])

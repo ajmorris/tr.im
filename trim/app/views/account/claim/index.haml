@@ -1,0 +1,10 @@
+%div#tagline= @tagline
+%table{ :width => "100%" }
+  %tr
+    %td{ :width => "10%" }<
+    %td{ :width => "80%", :style => "padding-right: 50px; vertical-align: top; text-align: center" }
+
+      =render :partial => "index"
+
+    %td{ :width => "10%", :style => "vertical-align: top" }
+      =render :partial => "account/shared/sb"

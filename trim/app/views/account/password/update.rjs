@@ -1,0 +1,2 @@
+page << "if (document.getElementById('password_visible') != null) { $('password_visible').update('#{@user.password}'); }"
+page.replace_html 'password_update', :partial => "done"

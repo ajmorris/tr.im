@@ -1,0 +1,8 @@
+%div.chartbox{ :style => "margin: 0px 0px 35px 140px; width: 625px; text-align: center" }
+  =@clicks_report.get_referers_chart(@trim_preferences.charts, 625, 350).html
+
+%table.stats{ :width => "88%", :align => "center", :style => "margin: 0px auto" }
+  %tr
+    %th{ :colspan => "2" }<
+      =t(:url_title_referers, :scope => :charts)
+  =render :partial => "line_referer", :collection => @clicks_report.clicks_referers

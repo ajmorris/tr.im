@@ -1,0 +1,54 @@
+-tmps_load = "$('progress_prefs').setStyle({visibility: 'visible'})"
+-tmps_comp = "$('progress_prefs').setStyle({visibility: 'hidden'})"
+-tmps_url  = account_preference_path(@trim_preferences)
+-tmps_html = { :method => :put, :id => "TRIMLF" }
+-remote_form_for @trim_preferences, :url => tmps_url, :html => tmps_html, :loading => tmps_load, :complete => tmps_comp do |prefs|
+  %table.preferences
+    %tr
+      %td{ :width => "35%" }<
+        %h2== #{word_trim} and then Tweet?
+        =prefs.select :trimtweet, { "YES" => "YES", "NO" => "NO" }
+      %td{ :width => "65%", :style => "text-align: left" }<
+        ==When you create a #{word_trim} URL you can just get the URL, or tweet it directly to Twitter via #{word_trim}.
+    %tr
+      %td<
+        %h2 Auto Submit?
+        =prefs.select :autosubmit, { "YES" => "YES", "NO" => "NO" }
+      %td{ :style => "text-align: left" }<
+        ==When tweeting from #{word_trim} do you want to submit the form by pressing the return key within the input area?
+    %tr
+      %td<
+        %h2 Clipboard New URLs
+        =prefs.select :copypaste, { "YES" => "YES", "NO" => "NO" }
+      %td{ :style => "text-align: left" }<
+        ==When #{word_trimming} a new URL do you want the new #{word_trim} automatically copied to your clipboard, if possible?
+    %tr
+      %td<
+        %h2 URLs per Page
+        =prefs.select :urlsppage, { 5 => 5, 10 => 10, 15 => 15 }.sort
+      %td{ :colspan => "2",  :style => "text-align: left" }<
+        ==Set the number of URLs to compile and present summary statistics for on the #{word_trim} homepage.
+    %tr
+      %td<
+        %h2 URL Sort
+        =prefs.select :urlsort, @url_sorts.collect {|x| [ x[1], x[0] ] }
+      %td{ :colspan => "2",  :style => "text-align: left" }<
+        For the Account URL list, select the preferred data item to sort URLs by.
+    %tr
+      %td<
+        %h2 URL Option Default
+        =prefs.select :return_id, @url_returns.collect {|x| [ x.name, x.id ] }
+      %td{ :colspan => "2",  :style => "text-align: left" }<
+        ==We have a few different redirect options for #{word_trim} URLs. You can set your preferred default.
+    %tr
+      %td<
+        %h2 New Statistics Page
+        =prefs.select :newforstats, { "YES" => "YES", "NO" => "NO" }
+      %td{ :style => "text-align: left" }<
+        ==When we link to a #{word_trim} URL's statistics page we open a new browser window or tab. If you don't like this turn it off here, no problem.
+
+  %div{ :align => "center" }
+    =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"
+    %div#progress_prefs{ :align => "center",  :style => "visibility: hidden"}<
+      =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => ""
+

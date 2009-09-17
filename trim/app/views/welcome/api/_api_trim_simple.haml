@@ -1,0 +1,12 @@
+%a{ :name => "trim_simple" }
+%h3 trim_simple
+%p<
+  ==This method works exactly the same as the trim_url method, with exactly the same parameters and authentication options. However, it only returns the new #{word_trim} URL -- nothing more. If there was an error, such as a failed authentication attempt or an exceeded API rate limit, it will return nothing. For this reason we suggest that you do not use method, or use it with caution, since you cannot determine the nature of problems.
+%p
+  %span.linetitle Examples:
+%p
+  %ul
+    %li== http://api.#{word_trim}/v1/trim_simple?url=http://www.google.com
+    %li== http://api.#{word_trim}/v1/trim_simple?url=http://www.google.com&username=fred&password=wilma
+
+=render :partial => "shared/separator"

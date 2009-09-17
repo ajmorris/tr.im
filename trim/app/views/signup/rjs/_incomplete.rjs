@@ -1,0 +1,2 @@
+page.replace_html "signup_errors", "You must enter an email address, login and password. Please try again."
+page << "$('user_email').focus()"

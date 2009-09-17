@@ -1,0 +1,51 @@
+%tr{get_url_row_highlight(row_counter)}
+  %td.url{ :style => "width: 375px" }<
+    %a.urltbl{ :href => trim_url.shortening.url_destination.url, :target => "_blank", :id => "href_#{trim_url.id}" }<
+      =get_url_label(trim_url.shortening.url_destination, trim_url)
+
+  %td{ :style => "text-align: center" }<
+    %a.urltbl{ :href => get_trim_url(trim_url), :target => "_blank" }<
+      =trim_url.shortening.surl
+
+  %td{ :style => "font-weight: bold", :id => "click_count_#{trim_url.id}" }= number_with_delimiter(@trims_list.url_clicks(trim_url.id))
+
+  %td<
+    %a{get_url_statslink(trim_url, trim_url.shortening)}<
+      =image_tag("/images/main/mini_graph.gif", :size => "16x16", :alt => "tr.im URL Statistics")
+  %td
+    %div{ :id => "retweet_#{trim_url.id}" }
+      -rf_load = "$('retweet_#{trim_url.id}').hide(); $('rt_progress_#{trim_url.id}').show()"
+      -rf_comp = "$('retweet_#{trim_url.id}').show(); $('rt_progress_#{trim_url.id}').hide()"
+      -imagett = image_tag("/images/main/mini_link.gif", :size => "16x16", :alt => "Share URL")
+      =link_to_remote imagett, :url => retweet_url(:id => trim_url.id), :loading => rf_load, :complete => rf_comp
+    %div{ :id => "rt_progress_#{trim_url.id}", :style => "text-align: center; display: none" }<
+      =image_tag "/images/indicators/standard_15.gif", :size => "15x15", :alt => ""
+
+  %td{ :style => "padding: 2px 2px 0px 4px" }
+    -reset_onc = "Effect.toggle('ur_#{trim_url.id}', 'appear', { duration: 0.5 }); $('ue_#{trim_url.id}').hide(); $('ud_#{trim_url.id}').hide();"
+    =image_tag "/images/main/mini_reset.png", :size => "16x16", :alt => "Reset Statistics on tr.im URL", "onclick" => reset_onc
+
+  %td{ :style => "padding: 2px 2px 0px 4px" }
+    -edit_onc = "Effect.toggle('ue_#{trim_url.id}', 'appear', { duration: 0.5 }); $('ud_#{trim_url.id}').hide(); $('ur_#{trim_url.id}').hide();"
+    =image_tag "/images/buttons/small_edit.gif", :size => "31x15", :alt => "Edit tr.im URL", "onclick" => edit_onc
+
+  %td{ :style => "padding: 2px 2px 0px 4px" }
+    -dele_onc = "Effect.toggle('ud_#{trim_url.id}', 'appear', { duration: 0.5 }); $('ue_#{trim_url.id}').hide(); $('ur_#{trim_url.id}').hide();"
+    =image_tag "/images/buttons/small_delete.gif", :size => "46x15", :alt => "Delete tr.im URL", "onclick" => dele_onc
+
+  %td<= trim_url.created_at.to_s(:trimmed_us)
+
+%tr{get_url_row_highlight(row_counter)}
+  %td{ :colspan => "9", :style => "padding: 0px; text-align: center" }
+    %div{ :id => "ue_#{trim_url.id}", :style => "text-align: center; display: none" }
+      =render :partial => "shared/urls/edit", :locals => { :trim_url => trim_url }
+
+%tr{get_url_row_highlight(row_counter)}
+  %td{ :colspan => "9", :style => "padding: 0px; text-align: center" }
+    %div{ :id => "ud_#{trim_url.id}", :style => "text-align: center; display: none"}
+      =render :partial => "shared/urls/delete", :locals => { :trim_url => trim_url }
+
+%tr{get_url_row_highlight(row_counter)}
+  %td{ :colspan => "9", :style => "padding: 0px; text-align: center" }
+    %div{ :id => "ur_#{trim_url.id}", :style => "text-align: center; display: none"}
+      =render :partial => "shared/urls/reset", :locals => { :trim_url => trim_url }

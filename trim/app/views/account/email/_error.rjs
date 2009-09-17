@@ -1,0 +1,4 @@
+page.replace_html 'errors_email', error_text
+page << "$('email_confirm').setStyle({border: '1px solid #A5C1D1'})"
+page << "$('email_new').setStyle({border: '1px solid #A5C1D1'})"
+page << "$('email_new').focus()"

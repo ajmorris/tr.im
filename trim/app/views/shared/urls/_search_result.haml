@@ -1,0 +1,12 @@
+-if has_urls?
+  -if @trims_list.length > WEBSITE_CONFIG['max_search_results']
+    %div.notice{ :style => "margin: 15px 0px 0px 0px" }
+      ==Your search matched too many of your #{word_trim} URLs.<br />Please refine your search and try again.
+  -else
+    =render :partial => "shared/urls/list"
+-else
+  %table.urltable
+    %tr
+      %td
+        %div.notice{ :style => "margin: 30px 0px" }
+          ==Your search did not match any of your<br />#{word_trim} URLs.

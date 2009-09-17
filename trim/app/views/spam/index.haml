@@ -1,0 +1,20 @@
+%div#tagline== Report Spam Abuse of #{word_trim}
+%div.thincontent{ :style => "width: 800px; padding-bottom: 35px" }
+  %table{ :width => "85%", :align => "center" }
+    %tr
+      %td{ :align => "center", :valign => "top", :style => "padding-top: 20px; min-width: 450px" }
+        %div#spam_report
+          =render :partial => "form"
+      %td
+        %div.trimbox{ :style => "margin: 10px 0px 0px 80px; width: 250px" }
+          %p<
+            %span{ :style => "font-size: 1.2em; font-weight: bold" }><
+              ==#{word_trim} does not send spam.
+          %p<
+            ==We are a URL shortening service for services such as #{link_to "Twitter", "http://www.twitter.com"}. But occasionally a spammer abuses #{word_trim}, tricking you into thinking we are sending their spam.
+          %p<
+            We too are victims of spam.
+          %p.section<
+            Please help us fight spam by pasting the spam content you received into the area to the left, and clicking SUBMIT.
+          %p<
+            ==We will deactivate the #{word_trim} URLs used in spam. We also configure the destination domain as a spammer domain name and never let it be used with #{word_trim} again.

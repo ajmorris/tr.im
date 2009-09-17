@@ -1,0 +1,3 @@
+%div{ :style => "margin: 35px 0px 20px" }
+  %div.notice{ :style => "margin: 0px auto; padding: 0px; font-size: 1.0em" }= flash[:notice]
+  =text_field_tag :trimmed_url, get_trim_url(@trim_url), :id => "URLR_surl"

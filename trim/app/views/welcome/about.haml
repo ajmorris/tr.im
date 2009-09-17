@@ -1,0 +1,23 @@
+%div#tagline== About #{word_trim}
+%div.thincontent{ :style => "width: 675px; padding-bottom: 35px" }
+  %p== #{word_trim} is an established URL shortening service that prepares great-looking short URLs for services like #{link_to "Twitter", "http://twitter.com", "target" => "_blank"}. If you send URLs out on Twitter, #{word_trim} is not only the best name, it is one of the shortest.
+  %p<
+    ==#{word_trim} constantly collects and can then present cool graphical statistics on your URLs, such as how many times they were <i>visited</i>, from which locations, and referred by which websites. With #{word_trim} you know exactly how many people clicked on you URLs, and from where.
+  %div.right{ :style => "padding: 0px 0px 8px 8px" }<
+    =link_to image_tag("/images/main/logo_nambu.png", :size => "150x150", :alt => "The Nambu Network"), "http://www.nambu.com/", :target => "_blank"
+  %p<
+    ==And, of course, #{word_trim} is absolutely free.
+
+  %h3 The Nambu Network
+  %p<
+    ==#{word_trim} is part of #{link_to "The Nambu Network", "http://www.nambu.com/"} of software and services. The Nambu Network, first and foremost, is about creating great software for a superior social messaging experience.
+
+  %h3== Follow #{word_trim} on Twitter!
+  %p<
+    ==To keep up-to-date on the developments here at #{word_trim}, #{link_to "follow us", "http://twitter.com/trimurls", "target" => "_blank"} on Twitter. Send us feature requests, feedback, or anything else. We want to hear from you!
+  %div.right<
+    =link_to image_tag("/images/misc/twitter_follow_smaller.png", :size => "185x75", :alt => "Follow tr.im on Twitter", :style => "float: right; margin-bottom: 20px"), "http://twitter.com/trimurls", "target" => "_blank"
+
+  %h3 Contact Us
+  %p.tight<
+    ==Contact us at any time via email to #{mail_to "support@tr.im", "support@tr.im"} with any complaints, problems or features you would like to see added to #{word_trim}. If you want something that will make #{word_trim} more useful to you, we want to know.

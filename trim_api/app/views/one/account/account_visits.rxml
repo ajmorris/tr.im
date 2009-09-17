@@ -1,0 +1,24 @@
+xml.instruct! :xml, :version => "1.0"
+xml.visits {
+  xml.status(@api["status"])
+  if @api["status"]["result"] == "OK"
+    xml.url_count(@api["url_count"])
+    xml.total_visits(@api["total_visits"])
+    if @api.has_key?("urls")
+      xml.urls {
+        for url in @api["urls"]
+          xml.item("reference" => url["reference"], "trim_path" => url["trim_path"], "url" => url["url"], "total_visits" => url["total_visits"]) {
+            if url.has_key?("visits")
+              for visit in url["visits"]
+                xml.visit {
+                  xml.date_time(visit["date_time"])
+                  xml.country_code(visit["country_code"])
+                }
+              end
+            end
+          }
+        end
+      }
+    end
+  end
+}

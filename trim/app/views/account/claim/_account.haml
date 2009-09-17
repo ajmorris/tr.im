@@ -1,0 +1,11 @@
+%tr
+  %td= account.network.name
+  %td= account.username
+  %td
+    %div.invisible{ :id => "progress_onoff_#{account.id}"}<
+      =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => "", :style => "margin: 5px 0px 0px 20px"
+  %td{ :colspan => "2" }<
+    -if account.has_trim_claimant_for_user_id?(@user.id)
+      %a#button_on.buttonset{ :href => "javascript:void(0)", :onclick => remote_function(:url => trimclaim_off_path(:username => account.username), :loading => "$('progress_onoff_#{account.id}').setStyle({visibility: 'visible'})", :complete => "$('progress_onoff_#{account.id}').setStyle({visibility: 'hidden'})") }
+    -else
+      %a#button_off.buttonset{ :href => "javascript:void(0)", :onclick => remote_function(:url => trimclaim_on_path(:username => account.username), :loading => "$('progress_onoff_#{account.id}').setStyle({visibility: 'visible'})", :complete => "$('progress_onoff_#{account.id}').setStyle({visibility: 'hidden'})") }

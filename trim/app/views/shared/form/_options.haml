@@ -1,0 +1,20 @@
+%div.trimoptionsbox
+  %table{ :width => "100%", :style => "margin-top: -16px" }
+    %tr
+      %td<= image_tag "/images/main/options_title.gif", :size => "65x19", :alt => "Options"
+      %td{ :align => "right", :style => "padding-bottom: 2px" }<
+        %a.help{ :href => "javascript:void(0)", :onclick => "$('bubble_options').toggle()" }
+
+  %table{ :align => "center" }
+    %tr<
+      %td<
+        %label{ :for => "options[custom]", :style => "float: left; padding: 4px 0px 0px 0px" } Custom URL:
+    %tr<
+      %td= text_field :options, :custom, :size => "12", :maxlength => "24"
+    %tr<
+      %td<
+        %label{ :for => "options[privacy]", :style => "float: left; padding: 5px 0px 0px 0px" } Privacy Code:
+    %tr<
+      %td= text_field :options, :privacy, :size => "12", :maxlength => "24"
+
+=render :partial => "shared/bubble/options"

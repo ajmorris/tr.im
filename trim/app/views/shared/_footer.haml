@@ -1,0 +1,6 @@
+%div.footer
+  ==#{link_to "Report Spam", spam_path} &nbsp;|&nbsp; #{link_to "About Us", about_path} &nbsp;|&nbsp; #{link_to "API", apidocs_path}
+  %div{ :style => "margin: 10px" }
+    ==#{word_trim} is a service of The Nambu Network.
+    %br
+    ==&#169; Copyright 2008-#{DateTime::now().year}, #{link_to "The Nambu Network, Inc.", "http://www.nambu.com/", :target => "_blank" } All Rights Reserved.

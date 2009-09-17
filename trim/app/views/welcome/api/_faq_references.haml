@@ -1,0 +1,4 @@
+%a{ :name => "FAQREFERENCES" }
+%h3== What is a #{word_trim} URL reference code?
+%p<
+  ==When you a create a #{word_trim} URL with the API's trim_url creation method we return to you in the response data a unique string called a "reference" code. This is a unique string that cannot be guessed, and allows you to request statistics for this URL from the API without having a #{word_trim} account, or having formal ownership of the #{word_trim} URL. The intent is to allow developers to access API methods for a specific URL without implementing account attachment if it is not applicable for their specific purposes. Therefore, anywhere in the API specifications that call for a <i>reference</i> code, it is requesting this unique string, not the #{word_trim} path. The #{word_trim} path is publicly known and guessable, and provides no measure of secure access.

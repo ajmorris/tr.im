@@ -1,0 +1,45 @@
+%div#tagline Frequently Asked Questions
+%div.thincontent{ :style => "width: 800px; padding-bottom: 35px" }
+  %h3 Questions:
+  %ul{ :style => "margin-bottom: 25px" }
+    %li<
+      %a{ :href => "#URLDELETION" }<
+        ==How long does a #{word_trim} URL last for?
+    %li<
+      %a{ :href => "#UNIQUE" }<
+        ==Are #{word_trim} URL statistics unique to a specific #{word_trim} URL?
+    %li<
+      %a{ :href => "#URLCLAIMS" }<
+        ==Can I get #{word_trim} URLs I create in desktop clients, such as Tweetdeck, put into my #{word_trim} account?
+	
+  =render :partial => "shared/separator"
+
+  %div.faq
+    %a{ :name => "URLDELETION" }
+    %h4==How long does a #{word_trim} URL last for?
+    %p<
+      ==We only ever reclaim a #{word_trim} URL if it does not belong to anybody, <i>and</i> it has never been used. URLs that are created via our #{link_to "application programming interface", apidocs_path}, without a username and password, for example, are not owned by anybody.
+    %p<
+      ==If you create a #{word_trim} URL within your #{word_trim} account, we will never delete it, whether it has ever been visited or not. Once you create it, you own it. Simple.
+
+  =render :partial => "shared/separator"
+
+  %div.faq
+    %a{ :name => "UNIQUE" }
+    %h4==Are #{word_trim} URL statistics unique to a specific #{word_trim} URL?
+    %p<
+      ==In a word, yes. All statistics presented for a #{word_trim} URL are unique to that URL. Every time a redirection request comes in, we record a variety of information -- the time, the unique Internet address for the requesting computer, where they came from -- and save a single record of that redirection. We then use these event records to create the statistical summaries. They only exist for the single #{word_trim} URL in question.
+    %p<
+      ==Some popular URL shorteners are setup such that users without accounts <i>share</i> links: they will each get the same URL for a given destination URL. #{word_trim} does not do this.
+
+  =render :partial => "shared/separator"
+
+  %div.faq
+    %a{ :name => "URLCLAIMS" }
+    %h4==Can I get #{word_trim} URLs I create in desktop clients put into my #{word_trim} account?
+    %p<
+      ==Yes! Many Twitter clients, such as Tweetdeck or Tweetie, have #{word_trim} support, but they do not allow you to enter your #{word_trim} account in their preferences. Without your #{word_trim} username and password we cannot attach your #{word_trim} URLs to your account when you create them. Our solution to this problem is #{word_trim} URL Claiming.
+    %p<
+      ==Anytime you share a URL on Twitter with an account that you configure with #{word_trim}, we will see it, and attach it to your account automatically if it is not already owned by anyone else. You can configure a Twitter account for URL claiming under #{link_to "Account > URL Claims", trimclaims_path}.
+    %p<
+      ==Other leading URL shorteners will never be able to do this because their publicly created URLs are <i>not</i> unique: they are shared by many, many users. All #{word_trim} URLs, however, are unique. So, any URL that we find in your Twitter status stream and can attach to your account will still have its statistics intact, and unique to your usage of that URL.

@@ -1,0 +1,11 @@
+%p.tight.bold.center<
+  ==Your #{word_website} account's email address is currently <b><span id="email_visible">#{@user.email.downcase}</span></b>.
+  %br
+  You can change this email address below.
+%div#email_update
+  =render :partial => "form"
+
+=render :partial => "shared/separator"
+%h3 Please Note:
+%p<
+  ==We protect your email address and we will not share it with anyone, or send you frivilous email messages. Having your email address is a privilege, and we will not abuse it.

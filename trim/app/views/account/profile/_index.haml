@@ -1,0 +1,22 @@
+%table.profile
+  %tr
+    %th{ :width => "50%" } Username
+    %th{ :width => "50%", :colspan => "2" } Password
+  %tr
+    %td
+      %div#username_visible= @user.login
+    %td
+      %div#password_hidden{ :style => "font-weight: bold" } &#149;&#149;&#149;&#149;&#149;&#149;&#149;
+  %tr
+    %td
+      %a#button_update.buttonset{ :href => "javascript:void(0)", :onclick => "$('password_update').hide(); $('username_update').toggle(); $('user_login').focus();" }
+    %td
+      %a#button_update.buttonset{ :href => "javascript:void(0)", :onclick => "$('username_update').hide(); $('password_update').toggle(); $('data_old').focus();" }
+
+%div#password_update{ :style => "display: none" }
+  =render :partial => "shared/separator"
+  =render :partial => "form_password"
+
+%div#username_update{ :style => "display: none" }
+  =render :partial => "shared/separator"
+  =render :partial => "form_username"

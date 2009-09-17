@@ -1,0 +1,24 @@
+%div#tagline Lost Password Reset
+%div#content_resetpwd{ :align => "center" }
+  -if @has_user_reset
+    %table{ :width => "60%", :align => "center", :style => "margin-top: 45px" }
+      %tr
+        %td{ :align => "center", :valign => "top" }
+          %div#errors_reset.errors
+          %table
+            %tr
+              %td
+                =render :partial => "form_reset"
+        %td
+          %div.trimbox{ :style => "margin: 0px 0px 0px 95px; width: 255px" }
+            %p{ :style => "font-size: 1.2em; font-weight: bold" }<
+              You can now reset your password.
+            %p.section<
+              Your new password must be four or more characters, and they must match to ensure that you have entered it correctly.
+            %p.section<
+              Choose something not easily guessed, but also easy enough that you do not have to write it down.
+  -else
+    %div.notice{ :style => "padding: 35px 0px; line-height: 135%" }<
+      The password reset code either does not exist<br />or it has expired.
+    %p.center<
+      ==To reset your account password, #{link_to "request a new password reset code", lost_path}<br />for your #{word_trim} account.

@@ -1,0 +1,33 @@
+CmdUtils.CreateCommand({
+  name: "tr.im",
+  preview: "Trims URLs using the tr.im service",
+  homepage: "http://tr.im/",
+  help: "Trims the selected URL.",
+  takes: {"url": noun_arb_text},
+  modifiers: {name: noun_arb_text, password: noun_arb_text},
+  execute: function(urlToTrim, mods) {
+    var url = "http://tr.im/api/trim_url.json";
+    var params = Array();
+    params.url = urlToTrim.text;
+    if (!params.url)
+      params.url = CmdUtils.getDocument().location.href;
+    var TrImPrefs = Application.storage.get ("extension.trim.TrImPrefs", false);
+    if (mods.name.text && mods.password.text) {
+      params.username = mods.name.text;
+      params.password = mods.password.text;
+    } else if (TrImPrefs) {
+      params.username = TrImPrefs.getCharPref ('username');
+      params.password = TrImPrefs.getCharPref ('password');
+    }
+    params.api_key = '7Ctm8v3s5Fr4ePaJ8xzsrJSQGwjC68SFkeAHDrydiuEKjccY';
+    jQuery.get (url, params, function (reply) {
+      if (reply.status.code >= 400)
+        displayMessage (reply.status.message);
+      else {
+        CmdUtils.copyToClipboard (reply.url);
+        displayMessage ('Copied the trimmed URL ('+reply.url+') to your clipboard.');
+      }
+    }, 'json');
+  }
+})
+

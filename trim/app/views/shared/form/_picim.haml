@@ -1,0 +1,16 @@
+-tmps_load = "$('progress_picim').setStyle({visibility: 'visible'})"
+-form_tag "http://pics.nambu.com/picim/create", { :multipart => true, :method => :post, :name => "picimupload", :target => "uploadframe" } do
+  #errors_picim{ :class => "errors" }<
+  %table{ :align => "center", :border => "1", :style => "width: 350px" }
+    %tr
+      %td{ :style => "text-align: center" }
+        =file_field_tag "picim_url[blob]", :class => "file"
+    %tr
+      %td{ :style => "text-align: center" }
+        %div<
+          =image_submit_tag "/images/buttons/trim_square.gif", :class => "button", :style => "margin: 10px 0px"
+        %div#progress_picim{ :class => "invisible" }<
+          =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => ""
+
+%iframe{ :src => "", :name => "uploadframe", :id => "uploadframe", :style => "width: 400px; height: 25px; border: 1px" }<
+  pic.im Kicks Ass

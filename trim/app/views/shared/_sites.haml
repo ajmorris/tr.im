@@ -1,0 +1,12 @@
+%div#siteselect
+  %form{ :action => "javascript:void(0)" }
+    %select#nambu_sites{ :size => "1" }
+      -if WEBSITE_CONFIG['website_id'] == Website::TRIM
+        %option{ :value => Website::TRIM, :selected => true } tr.im
+      -else
+        %option{ :value => Website::TRIM } tr.im
+
+      %option{ :value => "10" } nambu.com
+
+-if not laptop?
+  =observe_field :nambu_sites, :function => "if (value == '1') { window.location = 'http://tr.im/'; } else if (value == '10') { window.location = 'http://nambu.com/'; }", :frequency => 0.50

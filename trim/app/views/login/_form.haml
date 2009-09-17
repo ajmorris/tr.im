@@ -1,0 +1,22 @@
+-tmps_load = "$('progress_login').setStyle({visibility: 'visible'}); $('errors_login').update('')"
+-tmps_comp = "$('progress_login').setStyle({visibility: 'hidden'}); if (document.getElementById('notice_login') != null) { $('notice_login').remove(); }"
+-form_remote_tag :url => login_path, :html => { :id => "TRIMLF" }, :loading => tmps_load, :complete => tmps_comp do
+  %div#errors_login.errors
+  %table.standard{ :align => "center" }
+    %tr
+      %td<
+        %label{ :for => "user[login]" } Login:
+      %td= text_field :user, :login, :size => "22", :maxlength => "48", :value => @user_login
+    %tr
+      %td<
+        %label{ :for => "user[password]" } Password:
+      %td= password_field :user, :password, :size => "22", :maxlength => "48"
+    %tr
+      %td{ :colspan => "2" }
+        %table.submit
+          %tr
+            %td<
+              %div#progress_login.right.invisible<
+                =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => ""
+            %td<
+              =image_submit_tag "/images/buttons/normal_blank.gif", :id => "login", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"

@@ -1,0 +1,32 @@
+#container{ :style => "width: #{@inline_width + 20}px" }
+  -if @trim_url.has_clicks?
+    -tmpi = (@inline_width / 7).to_i
+    -if @trim_url.shortening.url_destination.url.length > tmpi
+      -tmps = "#{@trim_url.shortening.url_destination.url[0,tmpi]}[...]"
+    -else
+      -tmps = @trim_url.shortening.url_destination.url
+
+    %table{ :width => "95%" }
+      %tr
+        %td{ :width => "60%", :style => "text-align: left" }
+          =image_tag "#{get_absolute_url}/images/main/logo_extras.jpg", :size => "85x49", :alt => "tr.im", :style => "margin: 2px"
+        %td{ :width => "40%", :style => "text-align: right" }
+          %h1 Statistics Report
+          %h2== #{get_display_url(@trim_url)}
+      %tr
+        %td{ :colspan => "2" }
+          %div.destination= tmps
+      %tr
+        %td{ :style => "text-align: left" }
+          %div.topline<
+            ==#{word_trimmed} #{@trim_url.created_at.strftime("%B %d, %Y")}
+        %td{ :style => "text-align: right" }
+          %div.topline<
+            ==Total Visits: #{number_with_delimiter(@trim_url.clicks_count)}
+
+    %div.seperator
+    =render :partial => "inline"
+
+  -else
+    %div.notice{ :style => "width: #{@inline_width}px" }
+      ==There are not yet any visits to report on<br />for this #{word_trim} URL.

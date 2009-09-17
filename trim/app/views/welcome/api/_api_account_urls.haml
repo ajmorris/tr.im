@@ -1,0 +1,36 @@
+%a{ :name => "account_urls" }
+%h3 account_urls
+%p<
+  ==This method returns the authenticated #{word_trim} account's #{word_trim} URLs with their visitation totals. No detailed visitation information is returned. This method is intended for generating an account's URL list. An API key is required to use this API method.
+%p
+  %span.linetitle< URL:
+  ==http://api.#{word_trim}/v1/account_urls.&lt;format&gt;
+  %br
+  %span.linetitle< Method:
+  GET
+  %br
+  %span.linetitle< Formats:
+  xml, json
+  %br
+  %span.linetitle< Parameters:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_apikey_r"
+    %tr
+      %td.optional count
+      %td.optional Optional
+      %td== The number of #{word_trim} URL data sets to return, from the most to the least recent. Defaults to 20 if not present. A maximum of 100 is permitted.
+    =render :partial => "welcome/api/inline_account"
+%p
+  %span.linetitle< Response:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_status"
+    %tr
+      %td.optional urls
+      %td== A list of the returned #{word_trim} URLs and their destination domain name, #{word_trimmed} times and visitation count.
+    %tr
+      %td.optional url_count
+      %td The total URL count contained in the response.
+
+=render :partial => "shared/separator"

@@ -1,0 +1,3 @@
+page << "if (document.getElementById('username_visible') != null) { $('username_visible').update('#{@user.login}'); }"
+page << "if (document.getElementById('login_status_login') != null) { $('login_status_login').update('#{@user.login}'); }"
+page.replace_html 'username_update', :partial => "done"

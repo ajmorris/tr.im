@@ -1,0 +1,8 @@
+
+fred:
+  id: 1
+  website_id: 1
+  name: Fred Flintstone
+  url: http://flintstone.com
+  email: fred@flintstone.com
+  api_key: abcgdtehsusjd

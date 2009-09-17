@@ -1,0 +1,16 @@
+%div#tagline== #{word_trim} Time Zone
+%table{ :width => "100%" }
+  %tr
+    %td{ :width => "10%" }<
+    %td{ :width => "80%", :style => "vertical-align: top; text-align: center" }<
+
+      %div.account
+        -if flash[:notice]
+          %div#notice_account.notice= flash[:notice]
+
+        %div#section_tz
+          =render :partial => "intro"
+          =render :partial => "form"
+
+    %td{ :width => "10%", :style => "vertical-align: top" }
+      =render :partial => "account/shared/sb"

@@ -1,0 +1,30 @@
+-if @stats_ok
+  %div#tagline{ :style => "margin-bottom: 20px" }== #{word_trim} Statistics for #{get_trim_url(@trim_url)} 
+
+  -if @trim_url.has_clicks?
+    %table{ :width => "100%", :border => "0", :style => "margin: 0px 0px 0px 0px" }
+      %tr
+        %td{ :style => "padding: 0px 0px 15px 10px; vertical-align: bottom" }
+          %div.stats_topline{ :style => "float: left" }<
+            ==#{word_trim} of #{link_to @stats_url, @trim_url.shortening.url_destination.url}
+        %td{ :style => "padding: 0px 10px 15px 0px; vertical-align: bottom; text-align: right" }
+          %div.stats_topline{ :style => "float: right" }
+            ==Total Clicks: #{number_with_delimiter(@trim_url.clicks_count)}<br />
+            ==#{word_trimmed} #{@trim_url.created_at.strftime("%B %d, %Y")}
+
+    =render :partial => "sections"
+    
+    %div.trim_report_container
+      %div#trim_report
+        =render :partial => "report_summary"
+
+  -else
+    %div.notice
+      ==There are not yet any visits to report on<br />for this #{word_trim} URL.
+
+-else
+  %div#tagline{ :style => "margin-bottom: 20px" } &nbsp;
+  %div.notice<
+    ==This #{word_trim} URL does not exist,<br />or you are not authorized to view its statistics.
+  %p.center{ :style => "margin: 0px; padding: 20px; font-size: 1.1em; line-height: 150%" }<
+    ==Are you logged in?<br />If you are not logged in, or are not using the same computer you #{word_trimmed} this URL on,<br />you will not be able to view an URL's statistics.

@@ -1,0 +1,123 @@
+%div#tagline== The #{word_trim} API
+%div.thincontent{ :style => "width: 800px; padding-bottom: 35px" }
+  %h4 Introduction
+  %p.tight<
+    ==An API, or application programming interface, allows developers or power users to access features of #{word_trim} without using our website. Anyone can easily integrate #{word_trim} directly into their website or other applications, at no cost. 
+
+  =render :partial => "shared/separator"
+
+  %table{ :width => "100%", :border => "0" }
+    %tr
+      %td{ :width => "30%" }
+        %ul
+          %li Creation Methods
+          %li.api
+            %a{ :href => "#trim_url" } trim_url
+            %br
+            %a{ :href => "#trim_simple" } trim_simple
+          %li Miscellaneous Methods
+          %li.api
+            %a{ :href => "#trim_reference" } trim_reference
+            %br
+            %a{ :href => "#trim_claim" } trim_claim
+            %br
+            %a{ :href => "#trim_claim" } trim_destination
+          %li URL Statistics
+          %li.api
+            %a{ :href => "#url_visits" } url_visits
+          %li Account Methods
+          %li.api
+            %a{ :href => "#account_urls" } account_urls
+            %br
+            %a{ :href => "#account_visits" } account_visits
+          %li Configuration Methods
+          %li.api
+            %a{ :href => "#verify" } verify
+            %br
+            %a{ :href => "#shorteners" } shorteners
+          %li bit.ly Methods
+          %li.api
+            %a{ :href => "#bitly_shorten" } shorten
+            %br
+            %a{ :href => "#bitly_expand" } expand
+
+      %td{ :width => "70%", :style => "vertical-align: top" }
+        %p{ :style => "padding-left: 40px; padding-top: 10px" }<
+          ==We have many API methods, divided into different logical sections, to access the entire #{word_trim} feature set. We stress simplicity here at #{word_trim}, so while our API may not please all PHD purists, it is very easy to work with, and just get things done.
+        %p{ :style => "padding-left: 40px" }<
+          Our API supports XML and JSON response formats.
+        %ul
+          %li Frequently Asked Questions
+          %li.api
+            %a{ :href => "#FAQAPIKEYS" } Do I need to get an API key to use the tr.im API?
+            %br
+            %a{ :href => "#FAQACCOUNTS" } Are API keys attached to a tr.im account?
+            %br
+            %a{ :href => "#FAQINCREASE" } Can I get a rate limit increase?
+            %br
+            %a{ :href => "#FAQBANNED" } Why has my IP address been banned?
+            %br
+            %a{ :href => "#FAQREFERENCES" }== What is a #{word_trim} URL reference code?
+            %br
+            %a{ :href => "#FAQCODES" } How do these API response codes work? Are they HTTP codes?
+
+  =render :partial => "shared/separator"
+
+  %h3 API Rate Limits
+  %p<
+    ==All #{word_trim} API methods are subject to rate limiting by IP address. The #{word_trim} API methods <i>trim_url</i> and <i>trim_simple</i> have a combined default rate limit of 48 new URLs per day, up to 10 per hour, per IP address. This is intentionally set on the low side to prevent any overwhelming malicious insertion of data into our database. <i>trim_destination</i> has the highest rate limit set -- generally the same number of URLs we create per day -- so that you can more efficiently determine the destinaion URL for all or any #{word_trim} URLs.
+  %p<
+    ==For most other methods other than these three, there is a limit of 1,500 requests per day, up to 120 per hour, per IP address. If this is too restrictive for your application, #{mail_to "api@tr.im", "email us"} for an API key so we can customize your limits.
+  %p<
+    ==<strong>Please note:</strong> If your application hits an API limit you will get a #{word_trim} response code within your JSON or XML response clearly indicating this. If you ignore #{word_trim} response codes, and continue to make API requests <i>well in excess</i> of the limits for any method, we have automated protection systems in place that will ban your IP address for 48 hours for <i>all</i> methods, and access to all #{word_trim} websites. Please check these #{word_trim} API response codes. Almost no developers encounter this problem, but please prepare for the usage you expect, and help us keep #{word_trim}'s API running smoothly.
+  %p<
+    ==For developmenet and other testing please use the <i>sandbox</i> parameter on the trim_url and trim_simple methods to not actually create an operational #{word_trim} URL or consume any API rate limits. This will ensure you don't run into any API rate limit problems while in development.
+
+  %h3 API Keys
+  %p<
+    ==#{word_trim} API keys are for applications, not individual user accounts. If you have an application that may potentially require higher limits than those above -- such as if you are accessing multiple accounts from a single server IP address, for example -- you can request an API key that we can configure to bypass the default API limits. If you would like to get an increase, or may run into the limit because of a shared IP address, send an email to #{mail_to "api@tr.im"} and we can assign you an API key. API keys are also required for selected API methods.
+
+  %h3 JSON Callback
+  %p<
+    ==The #{word_trim} API will wrap a JSON response in a callback function if you add a callback parameter, and request the JSON response format.
+    %br
+    ==&nbsp;&nbsp; http://#{word_trim}/api/trim_url.json?api_key=jiOWWs2zD8tE&url=http://www.google.com&callback=jsfunction
+
+  %h3== #{word_trim} Account Authentication
+  %p<
+    ==Many API methods can be sent a #{word_trim} account and password as appropriate or required. You can authenticate a #{word_trim} user account in one of two ways: 1) query string parameters; and 2) basic HTTP authentication. HTTP authentication is the preferred method, since query string parameters are potentially cached by proxies, potentially leaving the #{word_trim} username and password cached in the clear. However, we supply both options, and leave it up to the individual developer to determine which authentication method is the most appropriate for their purposes.
+
+  =render :partial => "welcome/api/docs_uploads"
+  =render :partial => "welcome/api/docs_codes"
+
+  %p<
+    &nbsp;
+
+  =render :partial => "shared/title", :locals => { :title => "API Methods" }
+  =render :partial => "welcome/api/api_trim_url"
+  =render :partial => "welcome/api/api_trim_simple"
+
+  =render :partial => "welcome/api/api_trim_reference"
+  =render :partial => "welcome/api/api_trim_claim"
+  =render :partial => "welcome/api/api_trim_destination"
+
+  =render :partial => "welcome/api/api_url_visits"
+  =render :partial => "welcome/api/api_account_urls"
+  =render :partial => "welcome/api/api_account_visits"
+
+  =render :partial => "welcome/api/api_verify"
+  =render :partial => "welcome/api/api_shorteners"
+
+  =render :partial => "welcome/api/api_bitly_shorten"
+  =render :partial => "welcome/api/api_bitly_expand"
+
+  %p<
+    &nbsp;
+
+  =render :partial => "shared/title", :locals => { :title => "Frequently Asked Questions" }
+  =render :partial => "welcome/api/faq_apikey"
+  =render :partial => "welcome/api/faq_accounts"
+  =render :partial => "welcome/api/faq_increase"
+  =render :partial => "welcome/api/faq_banned"
+  =render :partial => "welcome/api/faq_references"
+  =render :partial => "welcome/api/faq_codes"

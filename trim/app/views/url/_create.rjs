@@ -1,0 +1,8 @@
+page.replace_html 'trim_section_result', :partial => 'shared/urls/result'
+page << "$('trim_section_stuff').fade({ duration: 0.2 })"
+page << "$('trim_section_share').fade({ duration: 0.2 })"
+page << "setTimeout(\"$('trim_section_result').appear({ duration: 0.5 })\", 250)"
+page << @trim_resets
+page << @menu_resets
+page << "$('URLR_surl').activate()"
+page << "clipboardCopy('#{get_trim_url(@trim_url)}')"

@@ -1,0 +1,13 @@
+%div#tagline{ :style => "font-size: 5px" } &nbsp;
+%div#trim_shorten
+  =render :partial => "shared/form/trim"
+  =render :partial => "shared/sections"
+%div#trim_sections{ :style => "min-height: 100px" }
+  %div#trim_section_stuff= render :partial => "section/urls"
+  %div#trim_section_share{ :style => "display: none" }
+  %div#trim_section_result{ :style => "display: none" }
+  %div#trim_section_progress{ :align => "center", :style => "padding: 35px 0px; text-align: center; display: none" }<
+    =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => "tr.im Progress"
+
+=render :partial => "shared/separator"
+=render :partial => "welcome/home/about"

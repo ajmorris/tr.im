@@ -1,0 +1,2 @@
+page.replace_html "ud_#{@trim_url.id}", :partial => "shared/urls/delete_noauth"
+page << "setTimeout(\"$('ud_#{@trim_url.id}').fade({ duration: 0.5 })\", 800)"

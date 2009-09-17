@@ -1,0 +1,18 @@
+%div#tagline== Your Top #{word_trim}s
+%table{ :width => "100%", :border => "0" }
+  %tr
+    %td{ :width => "5%" }<
+    %td{ :width => "80%", :style => "text-align: center" }
+
+      -if not @top_trims.empty?
+        %table.toptrims
+          %tr
+            %th{ :colspan => "2" }
+              ==Your Recent Top #{word_trim}s
+          =render :partial => "top_trim", :collection => @top_trims
+      -else
+        %div.notice{ :style => "margin: 50px 0px 0px 0px; min-height: 225px" }
+          ==You do not yet have any top #{word_trim}s to summarize.
+
+    %td{ :width => "15%", :valign => "top" }
+      =render :partial => "account/shared/sb"

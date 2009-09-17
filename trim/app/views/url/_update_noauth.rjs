@@ -1,0 +1,1 @@
+page.replace_html "ue_#{trim_url.id}", :partial => "shared/urls/done_noauth"

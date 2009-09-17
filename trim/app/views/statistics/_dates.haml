@@ -1,0 +1,21 @@
+-if @clicks_report.length_dates <= mdbot
+  -if @trim_preferences.flash_charts?
+    =@clicks_report.get_hours_chart(@trim_preferences.charts, width, 240).html
+  -else
+    %div.chartbox{ :style => "margin: 0px; width: #{width - minus}px" }
+      =@clicks_report.get_hours_chart(@trim_preferences.charts, width - minus, 240).html
+
+-elsif @clicks_report.length_dates > mdbot && @clicks_report.length_dates < mdtop
+  %div.chartbox{ :style => "margin: 0px; width: #{width - minus}px" }
+    =@clicks_report.get_dates_chart(@trim_preferences.charts, width - minus, 240).html
+
+-elsif @clicks_report.length_dates > mdtop && @clicks_report.length_dates <= ClicksReport::MAX_DAYS_LENGTH
+  -if @trim_preferences.flash_charts?
+    =@clicks_report.get_dates_chart(@trim_preferences.charts, width, 240).html
+  -else
+    %div.chartbox{ :style => "margin: 0px; width: #{width - minus}px" }
+      =@clicks_report.get_dates_chart(@trim_preferences.charts, width - minus, 240).html
+
+-else
+  %div.chartbox{ :style => "margin: 0px; width: #{width - minus}px" }
+    =@clicks_report.get_months_chart(@trim_preferences.charts, width - minus, 240).html

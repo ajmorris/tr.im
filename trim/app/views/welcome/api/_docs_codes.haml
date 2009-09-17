@@ -1,0 +1,32 @@
+%a{ :name => "CODES" }
+%h3 Response Codes
+%p<
+  ==The #{word_trim} API responds with the following error codes:
+%ul
+  %li== <b>200</b> -- Request Completed. #{word_trim} URL Added, if Applicable.
+  %li== <b>201</b> -- Request Completed. #{word_trim} URL Already Added for Session or Authenticated #{word_trim} Account.
+  %li== <b>202</b> -- Request Completed. #{word_trim} URL Added and Attached to Authenticated #{word_trim} Account.
+  %li== <b>205</b> -- Request Completed. #{word_trim} URL Added but NOT attached. Confirm Username/Password.
+  %li <b>400</b> -- Required Parameter URL Not Submitted.
+  %li <b>401</b> -- Submitted URL Invalid.
+  %li== <b>402</b> -- Submitted URL is Already a Shortened URL.
+  %li <b>403</b> -- The URL has been Flagged as Spam and Rejected.
+  %li== <b>404</b> -- The Custom #{word_trim} URL Requested is Already in Use.
+  %li <b>405</b> -- Requested Custom URL Contains Invalid Characters.
+  %li <b>406</b> -- Requested Privacy Code Contains Invalid Characters.
+  %li <b>407</b> -- Requested Search Tags Contains Invalid Characters.
+  %li <b>410</b> -- Required Authentication Not Submitted or Invalid.
+  %li <b>411</b> -- URL Reference Code Not Submitted.
+  %li <b>412</b> -- URL Reference Code Not Does Not Exist.
+  %li== <b>413</b> -- #{word_trim} URL Path Not Submitted.
+  %li== <b>414</b> -- #{word_trim} URL Does Not Exist.
+  %li== <b>415</b> -- #{word_trim} URL Referenced Already Claimed.
+  %li <b>420</b> -- Media Type Uploaded Not Supported.
+  %li <b>421</b> -- Media Uploaded too Large.
+  %li <b>422</b> -- Media Uploaded XY Dimensions too Small.
+  %li== <b>425</b> -- API Rate Limit Exceeded.
+  %li== <b>426</b> -- API Key Submitted Does Not Exist or is Invalid.
+  %li== <b>427</b> -- API Key Required.
+  %li== <b>445</b> -- Parameter Data Within the Request is Invalid.
+  %li== <b>446</b> -- Required Parameter Missing within the Request.
+  %li== <b>450</b> -- An Unknown Error Occurred. Please email #{mail_to "api@tr.im"}.

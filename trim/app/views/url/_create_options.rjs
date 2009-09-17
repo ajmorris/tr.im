@@ -1,0 +1,13 @@
+page.replace_html 'errors_trim', t(:url_badchars, :scope => :errors)
+page << "Form.Element.setValue('URLF_url', '#{@user_url}')"
+if errors.on("custom")
+  page << "$('options_custom').focus()"
+  page << "$('options_custom').setStyle({border: '1px solid #97391D'})"
+else
+  page << "$('options_custom').setStyle({border: '1px solid #A5C1D1'})" end
+
+if errors.on("privacy")
+  page << "$('options_privacy').focus()"
+  page << "$('options_privacy').setStyle({border: '1px solid #97391D'})"
+else
+  page << "$('options_privacy').setStyle({border: '1px solid #A5C1D1'})" end

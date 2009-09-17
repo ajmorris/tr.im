@@ -1,0 +1,24 @@
+-tmps_load = "$('progress_reset').setStyle({visibility: 'visible'})"
+-tmps_comp = "$('progress_reset').setStyle({visibility: 'hidden'})"
+-form_remote_tag :url => pupdate_path, :html => { :id => "URLF" }, :loading => tmps_load, :complete => tmps_comp do 
+  %table.standard{ :width => "100%" }
+    %tr
+      %td.toptext{ :colspan => "2" }<
+        ==Enter the a new password, for your account, and enter it again to confirm.
+    %tr
+      %td{ :width => "90%" }<
+        %label{ :for => "interim_password" } Password:
+      %td{ :width => "10%" }= password_field :interim, :password, :size => "20", :maxlength => "48"
+    %tr
+      %td<
+        %label{ :for => "interim_password_confirm" } Confirmation:
+      %td= password_field :interim, :password_confirm, :size => "20", :maxlength => "48"
+    %tr
+      %td{ :colspan => "2" }
+        %table.submit
+          %tr
+            %td<
+              %div#progress_reset{ :style => "float: right; visibility: hidden" }<
+                =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => ""
+            %td<
+              =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"

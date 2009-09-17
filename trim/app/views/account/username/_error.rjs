@@ -1,0 +1,3 @@
+page.replace_html 'errors_username', error_text
+page << "$('user_login').setStyle({border: '1px solid #97391D'})"
+page << "$('user_login').focus()"

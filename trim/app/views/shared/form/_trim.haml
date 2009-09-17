@@ -1,0 +1,51 @@
+-if @marklet && @marklet_errors
+  :javascript
+    jQuery(document).ready(function() {
+      if (loPanelExists('URLF_url')) {
+        Form.Element.setValue('URLF_url', '#{@user_url}');
+        $('URLF_url').activate();
+        $('URLF_url').setStyle({ border: '1px solid #97391D' });
+      }
+    })
+-tmps_load = "$('progress_url').setStyle({visibility: 'visible'}); $('errors_trim').update('')"
+-tmps_comp = "$('progress_url').setStyle({visibility: 'hidden'})"
+-tmps_url  = url_for(:controller => "url", :action => "create")
+-form_remote_tag :url => tmps_url, :html => { :id => "URLF", :name => "URLF" }, :loading => tmps_load, :complete => tmps_comp do
+  %table{ :align => "center" }
+    %tr
+      %td{ :colspan => "2" }
+
+        %table{ :width => "100%" }
+          %tr
+            %td{ :width => "25%", :style => "padding-bottom: 5px; text-align: left; vertical-align: bottom" }<
+              %h1== #{word_trim} your long URL
+            %td{ :width => "75%" }<
+              %div#errors_trim.errors= flash[:notice] if @marklet && @marklet_errors
+
+    %tr
+      %td
+
+        %table{ :width => "100%" }
+          %tr
+            %td{ :width => "20%", :colspan => "2" }<
+              =text_area :trim, :url, :size => "55x2", :id => "URLF_url"
+          %tr
+            %td{ :width => "80%" }
+              %table{ :style => "float: left" }
+                %tr
+                  %td= check_box "trim_preferences", "trimtweet", { }, "YES", "NO"
+                  %td<
+                    %label{ :for => "trim_preferences[trimtweet]" }<
+                      ==#{word_trim} <i>and</i> then tweet it to Twitter?
+
+            %td{ :width => "20%" }
+              %table{ :align => "right" }
+                %tr
+                  %td
+                    %div.invisible#progress_url<
+                      =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => ""
+                  %td{ :style => "padding: 8px 0px 0px 8px" }<
+                    =image_submit_tag "/images/buttons/normal_blank.gif", :id => "trim", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"
+
+      %td{ :valign => "top" }
+        =render :partial => "shared/form/options"

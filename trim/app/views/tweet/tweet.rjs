@@ -1,0 +1,2 @@
+page.replace_html 'trim_section_share', :partial => 'done'
+page << "markletRedirect('#{session[:marklet_referer]}', 2)" if session[:marklet] && session[:marklet_referer]

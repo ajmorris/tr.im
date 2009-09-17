@@ -1,0 +1,26 @@
+xml.instruct! :xml, :version => "1.0"
+xml.visits {
+  xml.status(@api["status"])
+  if @api["status"]["result"] == "OK"
+    xml.url_count(@api["url_count"])
+    if @api.has_key?("urls")
+      xml.urls {
+        for url in @api["urls"]
+          xml.item("url" => url["url"]) {
+            xml.reference(url["reference"])
+            xml.domain(url["domain"])
+            xml.destination(url["destination"])
+            xml.trimpath(url["trimpath"])
+            xml.visits(url["visits"])
+            xml.trimmed(url["trimmed"])
+            xml.date_time(url["date_time"])
+            xml.visits_since(url["visits_since"]) if url["visits_since"]
+            xml.last_visit(url["last_visit"]) if url["last_visit"]
+            xml.last_visit_i(url["last_visit_i"]) if url["last_visit_i"]
+            xml.last_visit_inwords(url["last_visit_inwords"]) if url["last_visit_inwords"]
+          }
+        end
+      }
+    end
+  end
+}

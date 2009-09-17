@@ -1,0 +1,1 @@
+page.replace_html 'section_tz', :partial => "done"

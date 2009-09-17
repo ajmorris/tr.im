@@ -1,0 +1,15 @@
+xml.instruct! :xml, :version => "1.0"
+xml.visits {
+  xml.status(@api["status"])
+  if @api["status"]["result"] == "OK"
+    xml.total_visits(@api["total_visits"])
+    if @api.has_key?("visits")
+      for visit in @api["visits"]
+        xml.visit {
+          xml.date_time(visit["datetime"])
+          xml.country_code(visit["country_code"])
+        }
+      end
+    end
+  end
+}

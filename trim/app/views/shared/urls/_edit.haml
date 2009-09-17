@@ -1,0 +1,36 @@
+-tmps_load = "$('progress_edit_#{trim_url.id}').setStyle({visibility: 'visible'})"
+-tmps_comp = "$('progress_edit_#{trim_url.id}').setStyle({visibility: 'hidden'})"
+-form_remote_tag :url => trimurl_path(trim_url), :html => { :method => :put, :id => "TUUPD" }, :loading => tmps_load, :complete => tmps_comp do
+  %table.urledit{ :style => "float: left" }
+    %tr
+      %td<
+        %label{ :for => "trim_url[title]" } Title:
+      %td<
+        =text_field :trim_url, :title, :maxlength => "48", :style => "width: 350px", :value => trim_url.title
+    %tr
+      %td<
+        %label{ :for => "trim_url[searchtags]" } Tags:
+      %td<
+        =text_field :trim_url, :searchtags, :maxlength => "48", :style => "width: 350px", :value => trim_url.searchtags
+    %tr
+      %td{ :style => "vertical-align: top" }<
+        %label{ :for => "trim_url[description]" } Description:
+      %td<
+        =text_area :trim_url, :description, :style => "height: 50px; width: 350px", :value => trim_url.description
+
+  %table.urledit{ :style => "float: right" }
+    %tr
+      %td<
+        %label{ :for => "trim_url[return_id]", :style => "float: none" }== #{word_trim} URL Action
+    %tr
+      %td<
+        =select("trim_url", "return_id", @url_returns.collect {|x| [ x.name, x.id ] }, { :selected => trim_url.return_id })
+    %tr
+      %td{ :style => "padding-top: 30px" }
+        %table.submit
+          %tr
+            %td<
+              %div{ :id => "progress_edit_#{trim_url.id}", :align => "center", :style => "visibility: hidden" }<
+                =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => "URL Edit Progress"
+            %td<
+              =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit_smaller", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"

@@ -1,0 +1,41 @@
+-tmps_load = "$('progress_tweet').setStyle({visibility: 'visible'}); $('errors_tweet').update('')"
+-tmps_comp = "$('progress_tweet').setStyle({visibility: 'hidden'})"
+-tc = "return updateTweetTextAreaCount(this.value, 'tweet_count')"
+-form_remote_tag :url => tweet_path, :html => { :id => "URLT", :name => "URLT" }, :loading => tmps_load, :complete => tmps_comp do
+  =hidden_field_tag "tweet[trim_url_id]", @trim_url.id
+  %table{ :border => "0", :style => "width: 400px" }
+    %tr
+      %td{ :style => "text-align: left; vertical-align: bottom" }
+        %h1== Share your #{word_trim}?
+      %td{ :style => "width: 325px; vertical-align: bottom" }<
+        %div#errors_tweet.errors
+      %td{ :style => "vertical-align: bottom" }<
+        %div#tweet_count<= (140 - get_display_url(@trim_url).length)
+    %tr
+      %td{ :colspan => "3" }
+        =text_area :tweet, :text, :size => "75x3", :id => "TWEET_text", :value => " #{get_display_url(@trim_url)}", :onblur => tc, :onfocus => tc, :onkeyup => tc, :style => "margin: 2px 0px"
+    %tr
+      %td{ :colspan => "2", :style => "vertical-align: top"}
+        %div#tweet_accounts
+          =render :partial => "shared/tweet_oauths"
+
+      %td{ :style => "vertical-align: top" }
+
+        %table{ :style => "float: right" }
+          %tr
+            %td<
+              =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"
+          %tr
+            %td<
+              %div#progress_tweet{ :align => "center", :style => "visibility: hidden" }<
+                =image_tag "/images/indicators/standard.gif", :size => "18x18", :style => "margin-bottom: 20px"
+
+    %tr
+      %td{ :colspan => "3" }
+        -if not @oauths.empty?
+          %div#inline_oauth_newaccount{ :align => "center", :style => "display: none" }
+            =render :partial => "shared/tweet_oauths_new"
+        -else
+          %div#inline_oauth_newaccount{ :align => "center" }
+            =render :partial => "shared/tweet_oauths_new"
+		

@@ -1,0 +1,24 @@
+xml.instruct! :xml, :version => "1.0"
+xml.visits {
+  xml.status(@api["status"])
+  if @api["status"]["result"] == "OK"
+    xml.picims_count(@api["picims_count"])
+    if @api.has_key?("picims")
+      xml.picims {
+        for picim_url in @api["picims"]
+          xml.item("url" => picim_url["url"]) {
+            xml.reference(picim_url["reference"])
+            xml.trimpath(picim_url["picimpath"])
+            xml.image_url_thumbnail(picim_url["image_url_thumbnail"])
+            xml.image_url_iphone(picim_url["image_url_iphone"])
+            xml.visits(picim_url["visits"])
+            xml.upload_from(picim_url["uploaded_from"])
+            xml.upload_at(picim_url["uploaded_at"])
+            xml.uploaded_at_date_time(picim_url["uploaded_at_date_time"])
+            xml.uploaded_at_inwords(picim_url["uploaded_at_inwords"])
+          }
+        end
+      }
+    end
+  end
+}

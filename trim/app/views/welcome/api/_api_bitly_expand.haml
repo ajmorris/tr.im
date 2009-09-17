@@ -1,0 +1,46 @@
+%a{ :name => "bitly_expand" }
+%h3 expand
+%p<
+  ==This is an alternative method to determination the destination URL for a #{word_trim} URL via the API, based on #{link_to "bit.ly's API", "http://code.google.com/p/bitly-api/wiki/ApiDocumentation"}. We mirror their main arguments and response format.
+%p
+  %span.linetitle URL:
+  ==http://api.#{word_trim}/v1/expand
+  %br
+  %span.linetitle Method:
+  GET
+  %br
+  %span.linetitle Format:
+  json
+  %br
+  %span.linetitle Parameters:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_apikey_b"
+    %tr
+      %td.required version
+      %td.required Required
+      %td== Set this to 2.0.1. This is the version of the bit.ly response we have cloned.
+    %tr
+      %td.required shortUrl
+      %td.required Required
+      %td== The path of the #{word_trim} URL. Please note, this is not an URL, as bit.ly named it. It is the path string, such as "AbcD" <i>within</i> the #{word_trim} URL.
+%p
+  %span.linetitle Response:
+  %br
+  %table.apimethod
+    %tr
+      %td.optional errorCode
+      %td== The error code if an error code occurred, otherwise 0.
+    %tr
+      %td.optional errorMessage
+      %td== The error code if an error code occurred, otherwise an empty string.
+    %tr
+      %td.optional results
+      %td== A hash of the results based on the "shortUrl" as the key, as per bit.ly's implementation.
+%p
+  %span.linetitle Examples:
+%p
+  %ul
+    %li== http://api.#{word_trim}/v1/expand?shortUrl=AbCd
+
+=render :partial => "shared/separator"

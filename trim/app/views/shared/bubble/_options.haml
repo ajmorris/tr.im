@@ -1,0 +1,15 @@
+%div.bubble
+  %div#bubble_options.infopopB.ip500{ :style => "display: none" }
+    %a.infoclose{ :href => "javascript:void(0)", :onclick => "$('bubble_options').hide()" }
+    %div.ip_top<
+      %div.ip_right
+    %div.ip_middle
+      %div.ip_right
+        %div.ip_content
+          ==A <b>custom URL</b> is a unique string that <i>you</i> can request we use to create a #{word_trim} URL, if it is available.
+          %br
+          &nbsp;
+          %br
+          ==A <b>privacy code</b> is a unique code that must be appended to the URL to access it, for example, http://#{word_trim}/eXaM-CoDe. This allows you to ensure that a URL can't be followed unless you give it out with this privacy code.
+    %div.ip_bottom
+      %div.ip_right

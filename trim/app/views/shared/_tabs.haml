@@ -1,0 +1,19 @@
+%div#headerleft
+  %ul#navtabs
+    -if @tab == "urls"
+      %li
+        %a.nav_current{ :href => root_path }<
+          %span URLs
+    -else
+      %li
+        %a{ :href => root_path }<
+          %span URLs
+
+    -if @tab == "account"
+      %li
+        %a.nav_current{ :href => account_path }<
+          %span Account
+    -else
+      %li
+        %a{ :href => account_path }<
+          %span Account

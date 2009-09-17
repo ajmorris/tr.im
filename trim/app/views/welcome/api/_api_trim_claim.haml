@@ -1,0 +1,30 @@
+%a{ :name => "trim_url" }
+%h3 trim_claim
+%p<
+  ==This method will attach an unattached #{word_trim} URL to the authenticated account, if you have the unique reference code for the #{word_trim} URL.
+%p
+  %span.linetitle< URL:
+  ==http://api.#{word_trim}/v1/trim_claim.&lt;format&gt;
+  %br
+  %span.linetitle< Method:
+  GET or POST
+  %br
+  %span.linetitle< Formats:
+  xml, json
+  %br
+  %span.linetitle< Parameters:
+  %br
+  %table.apimethod
+    %tr
+      %td.required reference
+      %td.required Required
+      %td==The #{word_trim} URL's unique reference string.
+    =render :partial => "welcome/api/inline_apikey_o"
+    =render :partial => "welcome/api/inline_account"
+%p
+  %span.linetitle< Response:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_status"
+
+=render :partial => "shared/separator"

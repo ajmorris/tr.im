@@ -1,0 +1,5 @@
+:
+/usr/bin/ruby -W0 functional/static_controller.rb
+/usr/bin/ruby -W0 functional/url_controller.rb
+/usr/bin/ruby -W0 functional/bitly_controller.rb
+/usr/bin/ruby -W0 functional/statistics_controller.rb

@@ -1,0 +1,25 @@
+-if @user_urls.empty?
+  %table.urltable
+    %tr
+      %td{ :style => "padding: 15px 0px" }
+        %div.nourls<
+          ==You currently do not have any #{word_trim} URLs to display.
+        %p.center<
+          ==We display your most recently #{word_trimmed} URLs here,<br />or, if you login, all of your #{word_trim} URLs since you signed up.
+        -if not has_session?
+          %p.center<
+            ==#{link_to "Login", login_form_path, :class => "urlt"} to see your most recent #{word_trimmed} URLs,<br />or #{link_to "create an account", signup_path, :class => "urlt"} to ensure you never lose track of your #{word_trim} URLs or their statistics.
+
+-else
+  %div#urls_search
+    %table.urlsearch{ :border => "0" }
+      %tr
+        %td.title
+          %h2#urls_title= get_title_urlslist
+        %td.search
+          =render :partial => "shared/urls/search"
+  %div#urls_results
+    =render :partial => "shared/urls/list"
+    =render :partial => "shared/urls/charts"
+  %div#urls_search_progress{ :style => "visibility: hidden" }
+    =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => "URL Search Progress"

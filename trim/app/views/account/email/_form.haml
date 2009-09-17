@@ -1,0 +1,25 @@
+-tmps_load = "$('progress_email').setStyle({visibility: 'visible'}); $('errors_email').update('')"
+-tmps_comp = "$('progress_email').setStyle({visibility: 'hidden'})"
+-tmps_html = { :method => :put, :id => "TRIMEMAIL" }
+-remote_form_for @user, :url => account_email_path(@user), :html => tmps_html, :loading => tmps_load, :complete => tmps_comp do
+  %table.account{ :width => "60%", :align => "center", :style => "margin: 20px auto" }
+    %tr
+      %td{ :colspan => "2" }
+        %div#errors_email.errors
+    %tr
+      %td<
+        %label{ :for => "email[new]" } New Email Address:
+      %td= text_field :email, :new, :size => "18", :maxlength => "48"
+    %tr
+      %td<
+        %label{ :for => "email[confirm]" } Confirm New Email Address:
+      %td= text_field :email, :confirm, :size => "18", :maxlength => "48"
+    %tr
+      %td{ :colspan => "2" }
+        %table.submit
+          %tr
+            %td<
+              %div#progress_email{ :style => "visibility: hidden" }<
+                =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => ""
+            %td<
+              =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"

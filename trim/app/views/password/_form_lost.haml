@@ -1,0 +1,18 @@
+-tmps_load = "$('progress_lostpwd').setStyle({visibility: 'visible'}); $('errors_lostpwd').update('')"
+-tmps_comp = "$('progress_lostpwd').setStyle({visibility: 'hidden'})"
+-form_remote_tag :url => delivery_path, :html => { :id => "PICIMPWD" }, :loading => tmps_load, :complete => tmps_comp do 
+  %div#errors_lostpwd.errors{ :style => "width: 400px" }<
+  %table.standard{ :width => "100%", :align => "center" }
+    %tr
+      %td.toptext{ :align => "center" }<
+        ==Enter your username or email address and we will send your password to you.
+    %tr
+      %td{ :align => "center" }<
+        =text_field_tag "user[account]", "", :size => "22", :maxlength => "48"
+    %tr
+      %td{ :align => "center" }<
+        =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"
+    %tr
+      %td{ :align => "center" }
+        %div#progress_lostpwd{ :style => "visibility: hidden" }<
+          =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => ""

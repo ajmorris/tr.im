@@ -1,0 +1,50 @@
+%div#hitscategories 
+  %div#hits_definitions
+    Hu&#183;man
+    %div.text<
+      In our best estimation, a person that clicked on your URL and went to its destination, based on the click being from a known, human-used browser.
+    %br
+    Bot
+    %div.text<
+      ==An automated program that only wants to know the destination of the #{word_trim} URL you shared. Not a human.
+  %div#hits_total.hitscategory
+    %h1 TOTAL VISITS
+    =number_with_delimiter(@trim_url.clicks_count)
+  %div#hits_human.hitscategory
+    %h1 Humans
+    =number_with_delimiter(@clicks_report.clicks_humans)
+  %div#hits_bots.hitscategory
+    %h1 Bots
+    =number_with_delimiter(@clicks_report.clicks_bots)
+
+=render :partial => "shared/separator"
+
+-if @clicks_report.has_human_clicks?
+  %table{ :width => "100%" }
+    %tr
+      %td{ :width => "50%" }
+
+        %div{ :style => "margin: 20px 20px 0px 15px" }
+          %h3 Human Visitors from ...
+          %div.chartbox{ :style => "margin: 10px 0px 0px 0px; width: 650px" }
+            =@clicks_report.get_countries_chart(@trim_preferences.charts, 650, 300).html
+
+      %td{ :width => "50%" }
+        &nbsp;
+
+    %tr
+      %td{ :colspan => "2" }
+
+        %div{ :style => "margin: 20px 20px 0px 15px" }
+          -if @clicks_report.clicks_humans == 1
+            %h3 First Human Visit ...
+          -elsif @clicks_report.clicks_humans > ClicksReport::MAX_HUMAN_CLICKS
+            %h3== Last #{ClicksReport::MAX_HUMAN_CLICKS} Human Visits ...
+          -else
+            %h3== First #{@clicks_report.clicks_humans} Human Visits ...
+          %table.agents{ :width => "100%" }
+            =render :partial => "line_visit", :collection => @clicks_report.lastvisits
+
+-else
+  %div.notice{ :style => "margin-top: 30px; font-size: 1.3em" }
+    ==There are not yet any human visits to this #{word_trim} URL<br />to present summaries for.

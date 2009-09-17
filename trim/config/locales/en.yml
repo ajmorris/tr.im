@@ -1,0 +1,77 @@
+##
+# Copyright (c) The Nambu Network Inc.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy,
+# modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software
+# is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+# LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+# IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+##
+
+en:
+  meta:
+    description: tr.im is for quick and easy URL shortening with integrated posting to social networks such as Twitter, with a free public API.
+    keywords: URL Shortening, Twitter, URL statistics
+
+  tweet:
+    badlogin: We received notice of an invalid authorization. Please try again, or re-authorize the account.
+    limited: We received notice of a rate limit problem. Please try again in a few minutes.
+    notweet: You must actually enter a tweet! Please try again.
+    timeout: There was a network access or timeout error. Please try again.
+    account_none: You do not yet any an authorization for pic.im. Please do that below.
+    account_taken: Only another user is authorized to use this specfic network username. Email support@tr.im.
+
+  errors:
+    url_invalid: Is there a problem with your URL? Is it valid?<br />Please try again.
+    url_other: Your URL already uses a shortening domain!<br />Please try again.
+    url_spam: Your URL contains a blacklisted domain name,<br />flagged as spam. Please try again. 
+    url_badchars: The custom URL, privacy code or search tags<br />can only be numbers and letters. Please try again.
+    url_unknown: There was a strange problem creating<br />your URL. Please try again.
+    url_nodata: You must actually enter an URL<br />to tr.im. Please try again.
+    url_limit: You have exceeded the tr.im rate limit.<br />Please try again in a few minutes.
+    url_customused: The custom URL you requested is already in use.<br >Sorry! Please choose another.
+    again: Please try again.
+    login_failed: Either your username or password was incorrect.<br />Please try again.
+    login_incomplete: You must enter both a username and password.<br />Please try again.
+    signup_missing_data: You must enter a username, password, <i>and</i> email address. Please try again.
+    signup_taken: The username you chose is already taken. Sorry! Please choose another.
+    signup_email_used: The email address you entered is in use already. You signup already?
+    password_needauth: You must enter your current password.<br />Please try again.
+    password_badauth: Your current password is not correct.<br />Please try again.
+    password_nomatch: The new password and its confirmation do not match. Please try again.
+    password_minimum: You must enter a new password of at least four (4) characters. Please try again.
+    username_missing: You must enter a username to reset.<br />Please try again.
+    username_taken: The username you chose is already taken. Sorry! Please choose another.
+    email_inuse: The email address you entered is already in use, with your account, or another. Please try again.
+    email_missing: You must enter an email address and confirmation.<br />Please try again.
+    email_notmatched: Your email address and its confirmation do not match.<br />Please try again.
+    no_account: We have been unable to locate your account, or we don't have your email address.<br />Please try again.
+    no_account_data: Your must enter a username, email address <i>or</i> Twitter ID. Please try again.
+    reset_security: There was a security problem with the password reset session. You will need to start the process again.
+    reset_minimum: Your new password must be at least 4 characters. Please try again.
+    reset_nomatch: Your new password and the confirmation do not match. Please try again.
+
+  notices:
+    url_marklet_at_trim: You clicked on the tr.im bookmarklet at tr.im?<br />You should use the bookmarklet when visiting other sites.
+    url_new: Your flashy, brand new tr.immed URL is ... 
+    url_already: Your already setup and ready to go tr.immed URL is ...
+    logout: You are now logged out of tr.im.
+
+  reports:
+    bots: Email, IM, and Bots
+    others: Others
+
+  charts:
+    url_title_clickline: Visitor Activity Timeline
+    url_title_referers: Known Referring Websites
+    url_title_countries: Visitor Locations
+    url_title_browsers: Visitor Browsers
+    url_title_platforms: Visitor Platforms
+    summary_visits: Sorted tr.im URLs with Visit Counts
+    summary_countries: Aggregated Visitor Locations

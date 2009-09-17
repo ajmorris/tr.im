@@ -1,0 +1,75 @@
+%a{ :name => "trim_url" }
+%h3 trim_url
+%p<
+  ==This is the main method for the #{word_trim} API, to submit a destination URL and get a unique #{word_trim} URL. You can send additional configuration options, and attach any #{word_trim} URLs you create to an authenticated #{word_trim} account.
+%p
+  %span.linetitle URL:
+  ==http://api.#{word_trim}/v1/trim_url.&lt;format&gt;
+  %br
+  %span.linetitle Method:
+  GET or POST
+  %br
+  %span.linetitle Formats:
+  xml, json
+  %br
+  %span.linetitle Parameters:
+  %br
+  %table.apimethod
+    %tr
+      %td.required url
+      %td.required Required
+      %td The destination URL to be shortened.
+    %tr
+      %td.optional custom
+      %td.optional Optional
+      %td A custom URL that is preferred to an auto-generated URL.
+    %tr
+      %td.optional searchtags
+      %td.optional Optional
+      %td== A search string value to attach to a #{word_trim} URL.
+    %tr
+      %td.optional privacycode
+      %td.optional Optional
+      %td A string value that must be appended after the URL.
+    %tr
+      %td.optional newtrim
+      %td.optional Optional
+      %td== If present with any value, it will force the creation of a new #{word_trim} URL.
+    =render :partial => "welcome/api/inline_apikey_o"
+    =render :partial => "welcome/api/inline_sandbox"
+    =render :partial => "welcome/api/inline_account"
+%p
+  %span.linetitle Response:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_status"
+    %tr
+      %td.optional url
+      %td== A unique #{word_trim} URL for the submitted destination URL.
+    %tr
+      %td.optional trimpath
+      %td== The #{word_trim} URL's path string.
+    %tr
+      %td.optional reference
+      %td== A unique string generated for each #{word_trim} URL for use with other API methods. We recommend that you save this reference code for use with future #{word_trim} API methods.
+
+%p
+  %span.linetitle Notes:
+%p
+  %ul
+    %li== If the username and password submitted with the request do not match a valid #{word_trim} account, the new #{word_trimmed} URL will still be created but remain unattached. A response code of 205 will be returned.
+%p
+  %ul
+    %li== The #{word_trim} website will not create a new #{word_trim} URL for a destination URL that you have already #{word_trimmed} within the same session, or for the same authenticated #{word_trim} account. The API permits this, however, with the newtrim parameter.
+%p
+  %ul
+    %li==<b>To #{word_trim} a destination URL with its own query string, you must URL encode the destination URL parameter</b>, or your destination URL will be split apart. The #{word_trim} servers will have no way to distinguish the two query strings. #{word_trim} will URL decode your destination URL before processing your request.
+%p
+  %span.linetitle Examples:
+%p
+  %ul
+    %li== http://api.#{word_trim}/api/trim_url.json?url=http://www.google.com
+    %li== http://api.#{word_trim}/api/trim_url.json?url=http://www.google.com&username=fred&password=wilma
+    %li== curl --basic -u fred:wilma http://api.#{word_trim}/api/trim_url.xml?url=http://www.google.com&newtrim=yes
+
+=render :partial => "shared/separator"

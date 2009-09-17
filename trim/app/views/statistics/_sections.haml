@@ -1,0 +1,36 @@
+%div#subtab_container
+  %div#subtabsleft
+    %ul#subtabs
+      -tmps_load = "$('progress_trim_report').setStyle({visibility: 'visible'}); $('trim_report').fade({ duration: 0.2 })"
+      -tmps_comp = "$('progress_trim_report').setStyle({visibility: 'hidden'});  $('trim_report').appear({ duration: 0.5 })"
+      %li
+        %a#subtab_summary.nav_current{ :href => "javascript:void(0)", :onclick => remote_function(:url => trim_summary_path(:surl => @trim_url.shortening.surl), :loading => tmps_load, :complete => tmps_comp) }
+          %span Summary
+      %li
+        %a#subtab_timelines{ :href => "javascript:void(0)", :onclick => remote_function(:url => trim_timelines_path(:surl => @trim_url.shortening.surl), :loading => tmps_load, :complete => tmps_comp) }
+          %span Timelines
+      %li
+        %a#subtab_referers{ :href => "javascript:void(0)", :onclick => remote_function(:url => trim_referers_path(:surl => @trim_url.shortening.surl), :loading => tmps_load, :complete => tmps_comp) }
+          %span Referers
+      %li
+        %a#subtab_agents{ :href => "javascript:void(0)", :onclick => remote_function(:url => trim_agents_path(:surl => @trim_url.shortening.surl), :loading => tmps_load, :complete => tmps_comp) }
+          %span Agents
+      %li
+        %a#subtab_locations{ :href => "javascript:void(0)", :onclick => remote_function(:url => trim_locations_path(:surl => @trim_url.shortening.surl), :loading => tmps_load, :complete => tmps_comp) }
+          %span Locations
+      %li#progress_trim_report.invisible<
+        =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => "", :style => "margin: 5px 0px 0px 5px"
+
+  %div#subtabsright
+    %ul#subtabs
+      -tmps_load = "$('progress_right_report').setStyle({visibility: 'visible'}); $('trim_report').fade({ duration: 0.2 })"
+      -tmps_comp = "$('progress_right_report').setStyle({visibility: 'hidden'});  $('trim_report').appear({ duration: 0.5 })"
+      -if beta?
+        %li
+          %a#subtab_shares{ :href => "javascript:void(0)" }
+            %span Shares
+
+      %li#progress_right_report.invisible<
+        =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => "", :style => "margin: 5px 0px 0px 5px"
+
+%div.clear

@@ -1,0 +1,19 @@
+-tmps_load = "$('progress_select').setStyle({visibility: 'visible'})"
+-tmps_comp = "$('progress_select').setStyle({visibility: 'hidden'})"
+-form_remote_tag :url => select_path, :html => { :id => "URLT", :name => "URLT" }, :loading => tmps_load, :complete => tmps_comp do
+  %table{ :border => "0", :style => "width: 400px" }
+    %tr
+      %td{ :style => "padding: 5px" }
+        %p.center.bigger<
+          ==Select a #{word_trim} to share and click SUBMIT.
+    %tr
+      %td
+        =get_trims_select
+    %tr
+      %td{ :style => "padding: 5px; text-align: center" }
+        %div{ :align => "center" }
+          =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"
+    %tr
+      %td{ :style => "text-align: center" }
+        %div#progress_select{ :align => "center", :style => "visibility: hidden" }<
+          =image_tag "/images/indicators/standard.gif", :size => "18x18", :style => "margin-bottom: 20px"

@@ -1,0 +1,79 @@
+%div#tagline== #{word_trim} Downloads and Other Extras
+%div.content
+  %table.features{ :width => "85%" }
+    %tr
+      %td{ :style => "text-align: center" }<
+        =link_to image_tag("/images/misc/extra_firefox.png", :size => "100x95", :alt => "Firefox"), WEBSITE_CONFIG['firefox_url'], :target => "_blank"
+      %td
+        %h4 Firefox Extension
+        %p.right<
+          =link_to image_tag("/images/misc/extra_download_cutout.png", :size => "32x32", :alt => "", :style => "margin: 0px 5px"), WEBSITE_CONFIG['firefox_url']
+        %p<
+          ==Add #{link_to "tr.im for Firefox", WEBSITE_CONFIG['firefox_url'], :target => "_blank"} to your Firefox to create new #{word_trim}s right from your toolbar. And with our Firefox URL status panel -- opened from your toolbar to the left -- you can review your URL list, check your latest #{word_trim} URL statistics, and tweet your #{word_trim} URLs all without distrupting your workflow.
+
+    %tr
+      %td{ :style => "text-align: center" }<
+        =link_to image_tag("/images/misc/extra_dashboard.png", :size => "76x86", :alt => "Dashboard"), WEBSITE_CONFIG['dashboard_url']
+      %td
+        %h4 Dashboard Widget
+        %p.right<
+          =link_to image_tag("/images/misc/extra_download_cutout.png", :size => "32x32", :alt => "", :style => "margin: 0px 5px"), WEBSITE_CONFIG['dashboard_url']
+        %p<
+          ==If you use Apple OS X and #{word_trim}, you definitely want our nifty #{link_to "tr.im Dashboard Widget", WEBSITE_CONFIG['dashboard_url']}. Like our Firefox extension, you can review your URL list and check your latest #{word_trim} URL statistics at any second without distrupting your workflow, or loading our website.
+        %p<
+          ==There is also a second cool widget for #{word_trim} called #{link_to "tr.im.it", WEBSITE_CONFIG['dashboard_trimit_url']}, written by #{link_to "Andrew Hedges", "http://andrew.hedges.name/widgets/"}, that takes up less space, and grabs the URL of your active browser automatically.
+
+    %tr
+      %td{ :style => "text-align: center" }<
+        =image_tag "/images/misc/extra_bookmarklet.jpg", :size => "76x86", :alt => "Bookmarklets"
+      %td
+        %h4 Bookmarklets
+        %p<
+          ==A bookmarklet is a small application stored as a bookmark within your browser. You do <i>not</i> download bookmarklets per se, but you drag and drop them onto your browser bookmark bar, and then use them from there.
+        %p<
+          ==When you click on a #{word_trim} bookmarklet, for example, it grabs the website address you are at, and gets a #{word_trim} URL for it, automatically. Bookmarklets are supported in either Firefox, Safari or Opera. If you use IE, perhaps you should switch!
+        %p<
+          ==#{word_trim} supports three different bookmarklets:
+
+        %table.marklets
+          %tr
+            %td{ :style => "padding: 10px; text-align: center" }<
+              ==#{link_to "tr.im", href_bookmarklet_trim, { :class => "marklet" }}
+            %td
+              %p<
+                ==Creates a new #{word_trim} URL for the website you are at, and open a page for you to quickly tweet it to Twitter, and then send you back again.
+          %tr
+            %td{ :style => "padding: 10px; text-align: center; white-space: nowrap" }<
+              ==#{link_to "tr.im NW", href_bookmarklet_window, { :class => "marklet" }}
+            %td
+              %p<
+                ==Creates a new #{word_trim} URL for ther website you are at, <i>but</i> it opens a new window, which you can then quickly close with a keyboard sequence if you prefer. No countdown, no waiting.
+          %tr
+            %td{ :style => "padding: 10px; text-align: center" }<
+              ==#{link_to "twitter", href_bookmarklet_twitter, { :class => "marklet" }}
+            %td
+              %p<
+                ==Of course, create a new #{word_trim} URL too, but instead send you over to Twitter's website to send it out from there.
+
+        %p<
+          ==Drag either to your bookmark bar and give them a try!
+
+    %tr
+      %td{ :style => "text-align: center" }<
+        =image_tag "/images/misc/extra_ubiquity.jpg", :size => "76x86", :alt => "Ubiquity"
+      %td
+        %h4 Ubiquity Scripts
+        %p<
+          ==For #{link_to "Mozilla's Ubiquity", "http://labs.mozilla.com/2008/08/introducing-ubiquity/", :target => "_blank"} a script for #{word_trim} was written by #{link_to "Dion Almaer", "http://almaer.com/"} to #{word_trim} a URL with ubiquitous ease. You can get it at #{link_to "his blog", "http://almaer.com/blog/loving-ubiquity-extending-the-web-in-2009"}.
+        %p.right<
+          =link_to image_tag("/images/misc/extra_download_cutout.png", :size => "32x32", :alt => "", :style => "margin: 0px 5px"), WEBSITE_CONFIG['ubiquity_url']
+        %p<
+          ==However, the obvious great thing about #{word_trim} is the ability to track activity on your #{word_trim}s. Well, you can't do that unless you attach your URL to your #{word_trim}. So we extended this script to include support for a #{word_trim} username and password. Download our version #{link_to "here", WEBSITE_CONFIG['ubiquity_url']}.
+
+    %tr
+      %td{ :style => "text-align: center; border: none" }<
+        =image_tag "/images/misc/extra_more.jpg", :size => "76x86", :alt => "More to Come"
+      %td{ :style => "border: none" }
+        %h4 More to Come ...
+        %p<
+          ==Here at #{word_trim} we have more extensions and tools in active development. These are on their way, so stay tuned here for additional #{word_trim} extras.

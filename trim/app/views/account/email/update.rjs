@@ -1,0 +1,2 @@
+page << "if (document.getElementById('email_visible') != null) { $('email_visible').update('#{@user.email}'); }"
+page.replace_html 'email_update', :partial => "done"

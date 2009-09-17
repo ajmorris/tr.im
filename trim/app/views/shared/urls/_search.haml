@@ -1,0 +1,12 @@
+-tmps_load = "$('progress_urlsearch').setStyle({visibility: 'visible'})"
+-tmps_comp = "$('progress_urlsearch').setStyle({visibility: 'hidden'})"
+-form_remote_tag :url => search_path, :html => { :name => "URLSEARCH", :id => "URLSEARCH" }, :loading => tmps_load, :complete => tmps_comp do
+  %table{ :align => "right" }
+    %tr
+      %td
+        %div#progress_urlsearch{ :style => "margin: 2px; visibility: hidden" }
+          =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => "URL Search Progress"
+      %td{ :style => "padding: 0px 5px" }
+        =text_field_tag "q", @url_search_term, :maxlength => "55", :style => "width: 200px"
+      %td{ :style => "padding: 3px 0px 0px 0px; vertical-align: middle" }
+        =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit_smaller", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"

@@ -1,0 +1,25 @@
+div.infopopA a.infoclose { right: 10px; top: 12px; }
+div.infopopA div.ip_top { background: url(/images/bubble/ip_tl.gif) no-repeat bottom left; padding: 0px; width: 100%; }
+div.infopopA div.ip_top div.ip_right { background: url(/images/bubble/ip_tr.gif) no-repeat bottom right; height: 12px; margin-left: 31px; }
+div.infopopA div.ip_middle { background: url(/images/bubble/ip_l.gif) no-repeat; clear: both; width: 100%; }
+div.infopopA div.ip_middle div.ip_right {background:url(/images/bubble/ip_r.gif) repeat-y right; margin-left: 24px; }
+div.infopopA div.ip_middle div.ip_right div.ip_content {
+  background: url(/images/bubble/ip_bg.gif) repeat top left;
+  margin-right: 8px;
+  padding: 5px 18px 5px 12px;
+}
+div.infopopA div.ip_bottom { background: url(/images/bubble/ip_bl.gif) no-repeat top left; clear: both; padding: 0px; width: 100%; }
+div.infopopA div.ip_bottom div.ip_right { background: url(/images/bubble/ip_br.gif) no-repeat top right; height: 14px; margin-left: 31px; }
+
+div.infopopA a.infoclose { left: 8px; top: 12px; }
+div.infopopB div.ip_top { background: url(/images/bubble/ipB_tl.gif) no-repeat bottom left; padding: 0px; width: 100%; }
+div.infopopB div.ip_top div.ip_right { background: url(/images/bubble/ipB_tr.gif) no-repeat bottom right; height: 12px; margin-left: 31px; }
+div.infopopB div.ip_middle { background: url(/images/bubble/ipB_l.gif) no-repeat; clear: both; width: 100%; }
+div.infopopB div.ip_middle div.ip_right { background: url(/images/bubble/ipB_r.gif) no-repeat top right; margin-left: 0px; }
+div.infopopB div.ip_middle div.ip_right div.ip_content {
+  background: url(/images/bubble/ip_bg.gif) repeat top left;
+  margin: 0px 24px 0px 8px;
+  padding: 6px 18px 5px 14px;
+}
+div.infopopB div.ip_bottom { background: url(/images/bubble/ipB_bl.gif) no-repeat top left; clear: both; padding: 0px; width: 100%; }
+div.infopopB div.ip_bottom div.ip_right { background: url(/images/bubble/ipB_br.gif) no-repeat top right; height: 14px; margin-left: 31px; }

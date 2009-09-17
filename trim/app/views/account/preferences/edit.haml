@@ -1,0 +1,14 @@
+%div#tagline== #{word_trim} Preferences
+%table{ :width => "100%" }
+  %tr
+    %td{ :width => "10%" }<
+    %td{ :width => "80%", :style => "vertical-align: top; text-align: center" }
+
+      -if flash[:notice]
+        %div#notice_account.notice= flash[:notice]
+
+      %div#section_prefs
+        =render :partial => "form"
+
+    %td{ :width => "10%", :valign => "top" }
+      =render :partial => "account/shared/sb"

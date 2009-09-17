@@ -1,0 +1,9 @@
+%div.notice{ :style => "padding: 25px; line-height: 1.3em" }
+  We located your account.
+  %br
+  We emailed a unique password reset link to the account's email address.
+%p.center
+  ==If you don't receive it, or otherwise are unable to recover your #{word_trim} account and password,<br />email us at #{mail_to "support@tr.im"}.
+
+%p.center{ :style => "margin-top: 25px" }
+  =link_to image_tag("/images/misc/twitter_follow.png", :size => "285x116", :style => "margin: 0px 0px 0px 20px"), "http://twitter.com/trimurls/", :target => "_blank"

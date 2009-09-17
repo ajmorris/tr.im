@@ -1,0 +1,27 @@
+%div#headerright
+  %ul#toplinks
+    -if has_session?
+      %li<
+        %a{ :href => logout_path }<
+          %span{ :style => "font-size: 1.0em; font-weight: bold" } logout
+    -else
+      %li<
+        %a{ :href => login_form_path }<
+          %span{ :style => "font-size: 1.0em; font-weight: bold" } login
+
+    -if beta?
+      %li<
+        %a{ :href => features_path }<
+          %span features
+
+    %li<
+      %a{ :href => extras_path }<
+        %span extras
+
+    %li<
+      %a{ :href => faqs_path }<
+        %span faqs
+
+    %li<
+      %a{ :href => "#{WEBSITE_CONFIG['website_blog_url']}" }<
+        %span blog

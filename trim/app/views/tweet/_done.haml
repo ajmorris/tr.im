@@ -1,0 +1,6 @@
+%div{ :align => "center" }
+  .notice<== Your update has been submitted to Twitter.
+  .trimtweetfinished<= h @tweet_text
+  -if session[:marklet] && session[:marklet_returnto] && session[:marklet_referer] != nil
+    .referer
+      ==Return to #{link_to session[:marklet_returnto], session[:marklet_referer]} in <span id="referer_countdown">2</span> ...

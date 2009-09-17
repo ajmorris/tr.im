@@ -1,0 +1,13 @@
+%table.profile{ :style => "margin-bottom: 0px" }
+  %tr
+    %th{ :width => "20%" } Network
+    %th{ :width => "30%" } Username
+    %th{ :width => "30%" } Status
+    %th{ :width => "10%" }
+    %th{ :width => "10%" } Options
+  -if @user.has_oauth_at_website?(WEBSITE_CONFIG['website_id'])
+    =render :partial => "account", :collection => @user.oauths_at_website(WEBSITE_CONFIG['website_id'])
+  -else
+    %tr
+      %td{ :colspan => "5", :style => "padding: 0px" }<
+        %div.notice== You do not have any Twitter accounts authorized<br />for #{word_website}.

@@ -1,0 +1,11 @@
+%div#tagline== Your #{word_trim}s and Account Settings
+%table{ :width => "100%", :border => "0" }
+  %tr
+    %td{ :width =>  "5%" }<
+    %td{ :width => "80%", :style => "vertical-align: top" }
+
+      %div.notice.left{ :style => "margin: 0px; font-size: 1.5em; line-height: 100%" }
+        ==You are currently logged in to #{word_trim}.
+
+    %td{ :width => "15%", :style => "vertical-align: top" }
+      =render :partial => "account/shared/sb"

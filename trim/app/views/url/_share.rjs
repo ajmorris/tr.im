@@ -1,0 +1,9 @@
+page.replace_html 'trim_section_share', :partial => 'tweet/retweet_table'
+page << "$('trim_section_stuff').fade({ duration: 0.2 })"
+page << "$('trim_section_result').fade({ duration: 0.2 })"
+page << "setTimeout(\"$('trim_section_share').appear({ duration: 0.2 })\", 200)"
+page << @menu_resets
+page << @trim_resets
+page << "Element.addClassName('menu_share', 'current');"
+page << "setTimeout(\"$('TWEET_text').focus()\", 425)"
+page << "$('TWEET_text').observe('keypress', function(e) { var cC = (e.which) ? e.which : e.keyCode; if (cC == '13') { sTF(); } })" if @trim_preferences.autosubmit_tweet?

@@ -1,0 +1,7 @@
+=render :partial => "shared/separator"
+%table.agents
+  -for agent in @agents
+    %tr
+      %td== #{h get_cached_agent(agent.id).details}
+      %td.cat= h agent.browser.name 
+      %td.cat= h agent.platform.name

@@ -1,0 +1,35 @@
+%a{ :name => "trim_url" }
+%h3 trim_destination
+%p<
+  ==This method will return the destination URL that the #{word_trim} URL redirects to. Therefore, you do not need to request the URL to learn where it goes, and adversely affect #{word_trim} statistics. This method's response will also be faster that an HTTP redirection.
+%p
+  %span.linetitle< URL:
+  ==http://api.#{word_trim}/v1/trim_destination.&lt;format&gt;
+  %br
+  %span.linetitle< Method:
+  GET or POST
+  %br
+  %span.linetitle< Formats:
+  xml, json
+  %br
+  %span.linetitle< Parameters:
+  %br
+  %table.apimethod
+    %tr
+      %td.required trimpath
+      %td.required Required
+      %td== The #{word_trim} URL's unique path string.
+    =render :partial => "welcome/api/inline_apikey_o"
+%p
+  %span.linetitle< Response:
+  %br
+  %table.apimethod
+    =render :partial => "welcome/api/inline_status"
+%p
+  %span.linetitle< Example:
+  %p
+    %ul
+      %li== If the #{word_trim} in question is http://#{word_trim}/abc then you use this API method as follows:
+      %li== &nbsp; &nbsp; http://api.#{word_trim}/api/trim_destination.json?trimpath=abc
+
+=render :partial => "shared/separator"

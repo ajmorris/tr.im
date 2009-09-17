@@ -1,0 +1,6 @@
+page.replace_html 'errors_trim', error_text
+page << "Form.Element.setValue('URLF_url', '#{@user_url}')"
+page << "$('URLF_url').setStyle({border: '1px solid #A5C1D1'})"
+page << "$('options_custom').focus()"
+page << "$('options_privacy').setStyle({border: '1px solid #A5C1D1'})"
+page << "$('options_custom').setStyle({border: '1px solid #97391D'})"

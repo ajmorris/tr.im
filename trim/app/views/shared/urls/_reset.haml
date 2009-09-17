@@ -1,0 +1,17 @@
+-tmps_load = "$('progress_reset_#{trim_url.id}').setStyle({visibility: 'visible'})"
+-tmps_comp = "$('progress_reset_#{trim_url.id}').setStyle({visibility: 'hidden'})"
+-form_remote_tag :url => reset_stats_path(trim_url), :html => { :method => :post, :id => "TRIMURLRS" }, :loading => tmps_load, :complete => tmps_comp do
+  %table{ :style => "margin: 5px auto", :border => "0" }
+    %tr
+      %td{ :colspan => "3" }
+        %span.notice== Are you sure that you want to reset statistics to zero for this #{word_trim} URL?
+        %br
+        %span{ :style => "font-size: 0.9em; font-style: italic" } This action cannot be undone.
+    %tr
+      %td{ :width => "45%", :style => "text-align: right" }
+        =image_submit_tag "/images/buttons/normal_blank.gif", :id => "yes", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off", :style => "margin: 0px auto"
+      %td{ :width => "10%" }<
+        %div{ :id => "progress_reset_#{trim_url.id}", :style => "margin: 0px 5px; visibility: hidden" }
+          =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => "URL Reset Progress"
+      %td{ :width => "45%", :style => "text-align: left" }
+        %a#button_no.buttonset{ :href => "javascript:void(0)", :onclick => "Effect.toggle('ur_#{trim_url.id}', 'appear', { duration: 0.5 })" }

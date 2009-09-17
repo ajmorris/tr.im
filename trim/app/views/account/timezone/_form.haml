@@ -1,0 +1,18 @@
+-tmps_load = "$('progress_tz').setStyle({visibility: 'visible'})"
+-tmps_comp = "$('progress_tz').setStyle({visibility: 'hidden'})"
+-tmps_html = { :method => :put, :id => "TRIMTZ" }
+-remote_form_for @user, :url => account_timezone_path(@user), :html => tmps_html, :loading => tmps_load, :complete => tmps_comp do
+  %table{ :align => "center", :style => "margin: 10px; width: 100%" }
+    %tr
+      %td{ :align => "center" }
+        -if @ipl.country && @ipl.country.code == "US"
+          =time_zone_select "user", "time_zone", ActiveSupport::TimeZone.us_zones, :default => "Eastern Time (US & Canada)"
+        -else
+          =time_zone_select "user", "time_zone", nil, :default => "Eastern Time (US & Canada)"
+    %tr
+      %td{ :align => "center", :style => "padding: 10px 0px 5px 0px" }
+        =image_submit_tag "/images/buttons/normal_blank.gif", :id => "submit", :onmouseover => "javascript:this.className='fb_on'", :onmouseout => "javascript:this.className='fb_off'", :class => "fb_off"
+    %tr
+      %td{ :align => "center" }
+        %div#progress_tz{ :align => "center", :style => "visibility: hidden" }<
+          =image_tag "/images/indicators/standard.gif", :size => "18x18", :alt => ""

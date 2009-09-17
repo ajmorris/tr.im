@@ -1,0 +1,7 @@
+-if @trims_list.has_clicks?
+  %div{ :align => "center", :style => "margin: 0px auto; padding-top: 10px" }
+    %h2= get_title_urlscharts
+    %div.chartbox{ :style => "margin: 10px 25px 20px 0px; float: #{@trims_list.clicks_summary_float}; width: #{@trims_list.clicks_summary_chart.width}px" }
+      =@trims_list.clicks_summary_chart.html
+    %div.chartbox{ :style => "margin: 10px 0px 20px 25px; float: #{@trims_list.countries_summary_float}; width: #{@trims_list.countries_summary_chart.width}px" }
+      =@trims_list.countries_summary_chart.html

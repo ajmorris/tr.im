@@ -1,0 +1,121 @@
+INDEX
+
+%div#trim_tweet{ :style => "display: none" }
+%div#trim_result.result{ :style => "display: none" }
+%div#urls_users.urls
+  =render :partial => 
+  =render :partial => "shared/urls_charts"
+
+page << "$('TWEET_url').observe('keypress', function(e) { var cC = (e.which) ? e.which : e.keyCode; if (cC == '13') { sTF(); } });" if @trim_preferences.autosubmit_tweet?
+page << "$('TWEET_text').focus()"
+
+
+
+  -if @sb == "toptrims"
+    %a.sidecurrent{ :href => toptrims_path }<
+      %span Top tr.ims
+  -else
+    %a{ :href => toptrims_path }<
+      %span Top tr.ims
+ 
+
+
+BLOGS
+=image_tag "/images/blog/blog_temp-pic.jpg", :size => "145x190", :alt => "", :class => "blogphoto"
+%div.bloglinkscontainer
+  %div.bloglinks
+    %a{ :href => "javascript:void(0)" } link
+
+%div.blogentry
+  %div.blogentry-top<
+    %span
+  %div.blogentry-center
+
+    %div.blogcalendar
+      %div.bcmonth= article.posted_month
+      %div.bcday= article.posted_date
+      %div.bcyear= article.posted_year
+
+    %div.blogcontent
+      %h1= link_to article.title, article_path(:title => article.urltitle)
+      =@article_contents[article.id]
+
+    %div.blogfooter
+      %div.blogdivider
+      %div.blogauthcontainer
+        %div.blogauth
+          =link_to "#{article.author.staff.name}", "http://twitter.com/#{article.author.staff.twitter_name}"
+    %div.blogclear
+
+  %div.blogentry-bottom<
+    %span
+
+
+
+=render :partial => "shared/chart_urls_clickline", :locals => { :title => "Aggregated #{word_trim} Visit Activity Last 30 Days" }
+
+-if @sidenav == "networks"
+  %a{"href" => "/account/network/", "class" => "sidecurrent"}<
+    %span Network Accounts
+-else
+  %a{"href" => "/account/network/"}<
+    %span Network Accounts
+
+-if @sidenav == "profile"
+  %a{"href" => "/account/profile/", "class" => "sidecurrent"}<
+    %span tr.im Account
+-else
+  %a{"href" => "/account/profile/"}<
+    %span tr.im Account
+
+      =@article_contents[article.id]
+
+/* == ------------------ TRIM PREVIEWS AND CONVERSATIONS ------------------- == */
+.preview { float: left; margin: 10px 0px 0px 40px; min-height: 375px; width: 450px; /* border: 1px solid #A5C1D1; */ }
+.title { margin: 0px 0px 8px 0px; font-size: 1.2em; font-style: italic; white-space: normal; }
+.domain { margin: 5px 0px 10px 0px; font-size: 1.1em; font-style: italic; }
+.counter { float: right; padding: 0px 10px 0px 0px; font-size: 1.1em; font-style: italic; }
+
+.stats { float: right; }
+.stats table { margin: 5px 35px 0px 0px; text-align: left; }
+.stats table td { padding: 2px; }
+
+.preview table { width: 100%; }
+.preview td { padding: 0px; }
+.preview td.pending { padding: 50px 0px 0px 0px; text-align: center; }
+.preview td.image { padding: 5px 0px 10px 0px; text-align: center; vertical-align: top; }
+
+elsif (value == '3') { window.location = 'http://pic.im/'; }
+.trimcontainer{ :align => "center", :style => "padding-bottom: 0px" }
+
+  =get_flashchart_bar_html(@clicks_summary_width, WEBSITE_CONFIG['chart_height_clicks'], @clicks_summary_xml)
+        =render :partial => "chart_url_clickline", :locals => { :trim_url => trim_url, :float => "none",  :width => 840, :height => 250 }
+
+
+        %li<
+          -if @topnav == "picim"
+            %a{ :href => picim_path, :class => "nav_current" }><
+              %span pic . im
+          -else
+            %a{ :href => picim_path}><
+              %span pic . im
+
+		    %a{ :href => login_form_path, :title => "LOGIN" } login
+		    %a{ :href => signup_path, :title => "SIGNUP" } signup
+
+			  %table{ :border => "1" }
+			      %tr
+			        %td{ :align => "right", :style => "padding: 4px 0px" }
+			          =link_to "Logout", logout_path
+			          -if @user.source == "MANUAL"
+			            #topcontent== #{h @user.login}
+			            #topcontent== #{h @user.email} 
+			          -else
+			            %br
+			            -if @user.has_account?
+			              -for tnet in @user.accounts
+			                #topcontent== #{h tnet.username} | #{@networks.find {|i| i.id == tnet.network_id }.domain}
+			
+			
+
+						    %link{ :rel => "alternate", :type => "application/rss+xml", :title => "Popular Tweeted tr.ims ...", :href => "/feed/trimmed.rss" }

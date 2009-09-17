@@ -1,0 +1,10 @@
+-if @trims_list.has_clicks?
+  %div{ :align => "center", :style => "margin: 0px 25px 0px 0px" }
+    %div.chartbox{ :style => "width: #{@trims_list.clicks_summary_chart.width}px" }
+      =@trims_list.clicks_summary_chart.html
+  %div{ :align => "center", :style => "margin: 30px 25px 0px 0px" }
+    %div.chartbox{ :style => "width: #{@trims_list.countries_summary_chart.width}px" }
+      =@trims_list.countries_summary_chart.html
+-else
+  %div.notice{ :style => "margin: 50px 0px 0px 0px; min-height: 225px" }
+    You do not have any URL activity<br />to report on.

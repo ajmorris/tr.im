@@ -1,0 +1,23 @@
+-if not @oauths.empty?
+  %table.twitters{ :align => "left", :border => "0" }
+    %tr
+      %td{ :width => "50%" }<
+        %label{ :for => "tweet[oauth_id]" } Send To:
+      %td{ :width => "50%", :style => "padding-left: 5px; text-align: left" }<
+        =select("tweet", "oauth_id", @oauths.collect {|i| [ "#{i.network.name} | #{i.username}", i.id ] })
+    %tr
+      %td{ :colspan => "2" }
+
+        %table{ :align => "right" }
+          %tr
+            %td<
+              %label{ :for => "tweet[new]" } Authorize an additional account?
+            %td{ :style => "padding: 2px 2px 2px 5px" }<
+              =check_box "tweet", "new", { :onchange => "$('inline_oauth_newaccount').toggle()" }, "YES", "NO"        
+
+-else
+  %table.twitters{ :align => "left", :border => "0", :style => "width: 250px" }
+    %tr
+      %td
+        %p.center
+          ==You do not have any Twitter authorizations completed for #{word_website}. Quickly add one below, then enter your tweet, and click SUBMIT.

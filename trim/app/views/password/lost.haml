@@ -1,0 +1,16 @@
+%div#tagline Lost Password Reset
+%div#content_lostpwd{ :align => "center" }
+  %table{ :width => "80%", :align => "center", :style => "margin-top: 20px" }
+    %tr
+      %td{ :align => "center", :style => "padding-top: 20px; vertical-align: top" }
+        =render :partial => "form_lost"
+      %td
+        %div.trimbox{ :style => "margin: 0px 0px 0px 65px; width: 285px" }
+          %p<
+            ==There are three ways to locate your #{word_trim} username and password: 1) your #{word_trim} username; 2) email address; or 3) Twitter ID.
+          %p<
+            If you have entered your email address with your account, we can email it to you.
+          %p<
+            However, obviously, you must have entered your email address to get it again via email.
+          %p.section<
+            ==If you still can't locate your #{word_trim} account feel free to contact us at #{mail_to "support@tr.im"} for help.
