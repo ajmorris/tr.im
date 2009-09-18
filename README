@@ -6,27 +6,29 @@ The tr.im URLs system is divided into three different Rails applications that ru
 -- The tr.im API
 -- The tr.im URLs redirection system
 
-By splitting tr.im into three applications we can all safely make updates to any one section knowing 100% will not affect the others in any way. Resources can be allocated to each based on demand. The core functions are logically separated.
+By splitting tr.im into three applications we can all safely make updates to any one section knowing 100% will not affect the others in any way. Resources can be allocated to each based on demand. The core functions are logically separated. If your demand does not warrant separate slice sets for each run them all on the same machine.
 
-The first Rails application for the tr.im website includes all the necessary models and shared plugin code, such that all three applications can access it without headaches, gems or separate plugin repositories. This is based on Rails Engines. The trim/vendor/plugins direcory is symbolic link within the API and redirection applications back to trim's, creating a shared plugins directory. Therefore you need the trim application to run the redirection and API applications.
+The first Rails application for the tr.im website includes all the necessary models and shared plugin code, such that all three applications can access it without headaches, gems or separate plugin repositories, which I deem to be an unecessary hassle. This is based on Rails Engines. The trim/vendor/plugins direcory is a symbolic link within the API and redirection applications back to trim's, creating a shared plugins directory. Therefore you need the trim application installed to run the redirection and API applications.
 
-I do not combine the methods for the API and website within a single application with respond_to because that removes flexibility in deployment. What if some dont want or need to offer an API? The architecture of three applications has made tr.im vastly more reliable as nothing a user or developer does on the tr.im website or API can *ever ever ever* affect redirections, which must never ever ever go down. I rarely deploy versions of trim_redirections and thus it never goes down. Tests are not enought to ensure that, as tests can never be perfect. If you shortener is good enough and well-named enough to get where tr.im was before the shutdown fiasco you will happy this split was in place from the start. Trust me.
+I do not combine the methods for the API and website within a single application based on some hack of respond_to because that removes flexibility in deployment. And what if some people that will use these applications to run their own shortener do not want to offer an public API? 
+
+The architecture of three applications has made tr.im vastly more reliable. Nothing a user or developer does on the tr.im website or API can *ever ever ever* affect redirections, with 100% certainty. I have no interest in living through that again. I rarely deploy new versions of trim_redirections and thus it never goes down. I never have to think about it. Tests are not enought to ensure that, as tests can never be perfect. If youe shortener is good enough and well-named to get where tr.im was before the shutdown fiasco you will happy this split was put in place from the start. Trust me.
 
 
 THE RAILS WAY
 =============
-All tr.im applications are currently at Rails v2.3.4. Please note that tr.im does not follow some of the common Rails conventions, especially as it pertains to database management. tr.im uses database foreign key constraints to ensure database integrity, and uses raw SQL in the the db database and migration files. Therefore, many of the standard db and test rake tasks will not work with tr.im.
+All tr.im applications are currently at Rails v2.3.4. Please note that tr.im does not follow some of the common Rails conventions, especially as it pertains to database management. tr.im uses database foreign key constraints to ensure database integrity, and uses raw SQL in the the db database and migration files. Therefore, many of the standard db and test rake tasks included with Rails will not work with tr.im.
 
-There are also no tests for the main website, but there are some for the API methods (rake trim:tests). Please do not complain to me about this. It is not wrong to not have tests for testing forms, which I deem to be pointless waste of my time. If you do it, great, that's cool but if others do not, it is not wrong. It is a choice.
+There are also no tests for the main website, but there are some for the API methods (rake trim:tests). Please do not complain to me about this. It is not wrong to not create tests for testing dead-simple forms, which I deem to be a pointless waste of my time. I know they work. If you do it, great, that's cool, but if others do not, it is not wrong. It is a choice.
 
-Some people follow Rails Ways without question, and that is totally fine, but I do not.
+Some people follow the Rails Way without question, and that is totally fine, but I do not.
 
 
 SETUP
 =====
-To setup tr.im for the first time you will need to create your own database.yml file which I currently symbolically link from /etc/trim_db.yml. You will also need to update the config/config.yml which I have used to set application-wide constants, and will expand further as needed to easily use the tr.im applications for running another shortener. Please open issues for anything related to this and I will fix it quickly. Also, update the environment files as you prefer for the cache store and its location, if applicable. tr.im a uses memcache cluster of 2 servers.
+To setup tr.im for the first time you will need to create your own database.yml file which I currently symbolically link from /etc/trim_db.yml. You will also need to update the config/config.yml which I have used to set application-wide constants, and will expand further as needed to easily use the tr.im applications for running another shortener. Please open issues for anything related to this and I will fix them quickly. Also, update the environment files as you prefer for a cache store and its location, if applicable. tr.im a uses memcache cluster of 2 servers.
 
-To get started, after your configuration updates and dataase user setup, in the trim Rails directory run:
+To get started, after your configuration updates and dataase user setup, in the trim Rails application run:
 
   rake trim:setup
 
@@ -35,9 +37,9 @@ There are other tr.im rake tasks for various features as well, such as tr.im URL
 
 THE ROADMAP
 ===========
-Initially, the idea is to have people use the tr.im instance for their own purposes, and fork and extend it if they so choose for service under their own domain names. I will continue to expand tr.im with anyone that wants to help. There are many features that only have placeholders at this point that just need to be flushed out. This includes imminent charts for regions and cities, private domains, and tweet performance reporting, as examples. There is more refactoring I need to do to.
+I will continue to expand tr.im. There are many features that only have placeholders at this point that just need to be flushed out. This includes imminent charts for regions and cities, private domains, and tweet performance reporting, as examples. There is also more refactoring I need to do to.
 
-There is a complete OAuth implementation in place as well, but no Twitter login option at this time because I still deem it too unreliable for authentication. I wont be adding that back into tr.im for now. Errors from OAuth callbacks are very common. Twitter timeouts are constant.
+There is a complete OAuth implementation in place as well, but no Twitter login option at this time because I still deem it too unreliable for authentication. I wont be adding that back into tr.im for now. Errors from OAuth callbacks are very common. Twitter timeouts are routine.
 
 I would like also to see development continue under tr.im with the following priorities:
 
@@ -46,12 +48,12 @@ I would like also to see development continue under tr.im with the following pri
 -- New API for tr.im URLs and statistics that is properly RESTful on HTTP verbs, with better statistics access
 -- New API methods to take notifications of shortenings of any tr.im-based shortener and publish them in real-time
 
-And anything else the community needs and wants. I will continue to work on tr.im, but Nambu is my priority at this time. I also will be adding some additional items that we want for Nambu OS X since the alternative APIs for the popular shorteners are still very very limited, and generally poorly implemented, or are really intended just to force usage of their websites.
+And anything else the community needs and wants. As I said, I will continue to work on tr.im, but Nambu is my priority at this time. I also will be adding some additional items that we want for Nambu OS X since the alternative APIs for the popular shorteners are still very very limited, and generally poorly implemented, or really intended just to force usage of their websites.
 
-Adding and working on these features under tr.im will not have the same impact now that the tr.im brand is damaged, probably fatally. New untarnished domain names can hopefully take the platform, and we can extend it together to offer more choice and options beyond bit.ly, which really does not serve novice users very well, and is pretty poorly named for them.
+Adding and working on these features under tr.im will not have the same impact now that the tr.im brand is damaged, probably fatally. New untarnished domain names can hopefully take the platform, and we can extend it together to offer more choice and options beyond bit.ly, which really does not serve novice users very well, and is poorly name (in all honestly), and will never offer access to real-time data.
 
 
-The Network Configuration
+THE NETWORK CONFIGURATION
 =========================
 To distribute incoming requests to the appropriate Rails applicaiton I use HAProxy. It directs requests based on the path name and forwards them to the appropriate backend. I currently have two servers for each application (bigger ones for redirections) such that I can push out updates with no disruption. You do not need to use HAProxy, but you will need something at the front end to distribute the requests based on the requested path. nginx would be a good second choice if for some reason you don't want to use HAProxy.
 
