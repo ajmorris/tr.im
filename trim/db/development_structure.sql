@@ -717,19 +717,6 @@ CREATE TABLE `user_agents` (
   CONSTRAINT `user_agents_ibfk_2` FOREIGN KEY (`browser_id`) REFERENCES `user_browsers` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
-CREATE TABLE `user_auto_logins` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `website_id` tinyint(3) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `reference` varchar(48) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `website_id` (`website_id`,`reference`),
-  KEY `user_id` (`user_id`),
-  CONSTRAINT `user_auto_logins_ibfk_1` FOREIGN KEY (`website_id`) REFERENCES `websites` (`id`),
-  CONSTRAINT `user_auto_logins_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
 CREATE TABLE `user_browsers` (
   `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(18) NOT NULL,

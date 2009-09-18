@@ -605,16 +605,6 @@ ActiveRecord::Schema.define(:version => 1) do
   add_index "user_agents", ["details"], :name => "details", :unique => true
   add_index "user_agents", ["platform_id"], :name => "platform_id"
 
-  create_table "user_auto_logins", :force => true do |t|
-    t.integer   "website_id", :limit => 1,  :null => false
-    t.integer   "user_id",                  :null => false
-    t.string    "reference",  :limit => 48, :null => false
-    t.timestamp "created_at",               :null => false
-  end
-
-  add_index "user_auto_logins", ["user_id"], :name => "user_id"
-  add_index "user_auto_logins", ["website_id", "reference"], :name => "website_id", :unique => true
-
   create_table "user_browsers", :force => true do |t|
     t.string "code", :limit => 18, :null => false
     t.string "name", :limit => 32, :null => false

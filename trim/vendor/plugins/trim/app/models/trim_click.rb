@@ -17,7 +17,7 @@
 class TrimClick < ActiveRecord::Base
   belongs_to :trim_url, :class_name => "TrimUrl", :foreign_key => "trim_url_id"
   belongs_to :country, :class_name => "TrimCountry", :foreign_key => "country_id"
-  belongs_to :region, :class_name => "NambuRegion"
-  belongs_to :city, :class_name => "NambuCity"
+  belongs_to :region, :class_name => "TrimRegion"
+  belongs_to :city, :class_name => "TrimCity"
   belongs_to :user_agent, :foreign_key => "agent_id"
 end
