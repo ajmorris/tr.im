@@ -1,5 +1,5 @@
-tr.im URLs
-==========
+TR.IM URLs as THREE APPLICATIONS
+================================
 The tr.im URLs system is divided into three different Rails applications that run independently of each other:
 
 -- The tr.im website for URL creation, account management and statistics presentation
@@ -10,9 +10,21 @@ By splitting tr.im into three applications we can all safely make updates to any
 
 The first Rails application for the tr.im website includes all the necessary models and shared plugin code, such that all three applications can access it without headaches, gems or separate plugin repositories. This is based on Rails Engines. The trim/vendor/plugins direcory is symbolic link within the API and redirection applications back to trim's, creating a shared plugins directory. Therefore you need the trim application to run the redirection and API applications.
 
+I do not combine the methods for the API and website within a single application with respond_to because that removes flexibility in deployment. What if some dont want or need to offer an API? The architecture of three applications has made tr.im vastly more reliable as nothing a user or developer does on the tr.im website or API can *ever ever ever* affect redirections, which must never ever ever go down. I rarely deploy versions of trim_redirections and thus it never goes down. Tests are not enought to ensure that, as tests can never be perfect. If you shortener is good enough and well-named enough to get where tr.im was before the shutdown fiasco you will happy this split was in place from the start. Trust me.
+
+
+THE RAILS WAY
+=============
 All tr.im applications are currently at Rails v2.3.4. Please note that tr.im does not follow some of the common Rails conventions, especially as it pertains to database management. tr.im uses database foreign key constraints to ensure database integrity, and uses raw SQL in the the db database and migration files. Therefore, many of the standard db and test rake tasks will not work with tr.im.
 
-To setup tr.im for the first time you will need to create your own database.yml file which I currently symbolically link from /etc/trim_db.yml. You will also need to update the config/config.yml which I have used to set application-wide constants, and will expand further as needed to easily use the tr.im applications for running another shortener. Also, update the environment files as you prefer for the cache store and its location, if applicable. tr.im a uses memcache cluster of 2 servers.
+There are also no tests for the main website, but there are some for the API methods (rake trim:tests). Please do not complain to me about this. It is not wrong to not have tests for testing forms, which I deem to be pointless waste of my time. If you do it, great, that's cool but if others do not, it is not wrong. It is a choice.
+
+Some people follow Rails Ways without question, and that is totally fine, but I do not.
+
+
+SETUP
+=====
+To setup tr.im for the first time you will need to create your own database.yml file which I currently symbolically link from /etc/trim_db.yml. You will also need to update the config/config.yml which I have used to set application-wide constants, and will expand further as needed to easily use the tr.im applications for running another shortener. Please open issues for anything related to this and I will fix it quickly. Also, update the environment files as you prefer for the cache store and its location, if applicable. tr.im a uses memcache cluster of 2 servers.
 
 To get started, after your configuration updates and dataase user setup, in the trim Rails directory run:
 
@@ -21,16 +33,16 @@ To get started, after your configuration updates and dataase user setup, in the 
 There are other tr.im rake tasks for various features as well, such as tr.im URL Claiming.
 
 
-The Roadmap
+THE ROADMAP
 ===========
-Initially, the idea is to have people use the tr.im instance for their own purposes, and fork and extend it if they so choose for service under their own domain names. I will continue to expand tr.im with anyone that wants to help. Working on the application set to run your shortener and tr.im only makes sense. There are many features that only have placeholders at this point that just need to be flushed out. This includes imminent charts for regions and cities, private domains, and tweet performance reporting, as examples.
+Initially, the idea is to have people use the tr.im instance for their own purposes, and fork and extend it if they so choose for service under their own domain names. I will continue to expand tr.im with anyone that wants to help. There are many features that only have placeholders at this point that just need to be flushed out. This includes imminent charts for regions and cities, private domains, and tweet performance reporting, as examples. There is more refactoring I need to do to.
 
-There is a complete OAuth implementation in place as well, but no Twitter login option at this time because I still deem it too unreliable for authentication. Errors from OAuth callbacks are very common. Twitter timeouts are constant.
+There is a complete OAuth implementation in place as well, but no Twitter login option at this time because I still deem it too unreliable for authentication. I wont be adding that back into tr.im for now. Errors from OAuth callbacks are very common. Twitter timeouts are constant.
 
 I would like also to see development continue under tr.im with the following priorities:
 
 -- New API methods for accessing URL shortening and click data in real-time with notifications
--- Addition of real-time chart updates using a Rack application and thin server set
+-- New real-time chart updates using a Rack application and thin server set
 -- New API for tr.im URLs and statistics that is properly RESTful on HTTP verbs, with better statistics access
 -- New API methods to take notifications of shortenings of any tr.im-based shortener and publish them in real-time
 
