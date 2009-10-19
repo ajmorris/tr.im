@@ -113,35 +113,6 @@ class One::AccountController < ApplicationController
     else api_set_error_response(425) end
     set_final_response
   end
-
-  def account_picims
-    if api_permitted?(@api_method.id, @remote_ip)
-      if has_api_session?
-
-        api_set_response("OK", 200, "tr.im Account pic.im URLs Returned.")
-        picim_count, summary = 0, Array.new
-        for puu in PicimUserUrl.all(:conditions => { :user_id => @user.id }, :order => "id DESC", :limit => get_rc, :include => [ :picim_url ])
-          summary << {
-            "url" => "http://pic.im/#{puu.picim_url.surl}",
-            "reference" => puu.picim_url.images[0].reference,
-            "picimpath" => puu.picim_url.surl,
-            "image_url_thumbnail" => puu.picim_url.images[0].thumbnail_url,
-            "image_url_iphone" => puu.picim_url.images[0].iphone_url,
-            "visits" => puu.picim_url.clicks,
-            "uploaded_from" => "TBD",
-            "uploaded_at" => puu.picim_url.created_at(:trimmed_us),
-            "uploaded_at_date_time" => puu.picim_url.created_at,
-            "uploaded_at_inwords" => get_timeago_inwords(puu.picim_url.created_at)
-          }
-          picim_count += 1
-        end
-        @api["picims"] = summary unless picim_count == 0
-        @api["picims_count"] = picim_count
-
-      else api_set_error_response(410) end
-    else api_set_error_response(425) end
-    set_final_response
-  end
   
   protected
   def get_rc

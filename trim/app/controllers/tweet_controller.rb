@@ -62,7 +62,7 @@ class TweetController < ApplicationController
             trim_tweet = TrimTweet.new do |tt|
               tt[:oauth_id] = @tweet_oauth.id
               tt[:user_id] = @user.id
-              tt[:trim_url_id] = params[:tweet][:trim_url_id]å
+              tt[:trim_url_id] = params[:tweet][:trim_url_id]
               tt[:tweet] = @tweet_text
               tt[:tweet_id] = tweet_id
               tt[:remote_id] = tweet_user_id
